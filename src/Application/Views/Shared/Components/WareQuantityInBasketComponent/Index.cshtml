@@ -1,0 +1,17 @@
+﻿
+@model int
+
+
+@{
+    int wareQuantity = Model;
+    if (wareQuantity > 0)
+    {
+        <span class="basket-counter">
+            @wareQuantity
+        </span>
+    }
+    else if(wareQuantity == 0)
+    {
+        <span class="basket-counter hidden"></span>
+    }
+}

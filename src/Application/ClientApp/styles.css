@@ -1,0 +1,11 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    background-attachment: #eee;
+    min-height: 100vh !important;
+}
+.grid-cell-centered {
+  text-align: center;
+}
+.d-flex {
+  display: flex !important;
+}

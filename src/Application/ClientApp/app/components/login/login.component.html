@@ -1,0 +1,27 @@
+<form name="addBrand" class="form-horizontal container-fluid" [formGroup]="myForm">
+    <div class="col-md-12 col-xs-12 ">
+        <div class="form-group col-md-12 col-xs-12">
+            <label>Email*</label>
+            <input type="text" class="form-control" formControlName="email"/>
+            <div *ngIf="errorDisplayed('email')" class="invalid-feedback">
+                <small>Email is required</small>
+            </div>
+        </div>
+        <div class="form-group col-md-12 col-xs-12">
+            <label>Password*</label>
+            <input type="password" class="form-control" formControlName="password"/>
+            <div *ngIf="errorDisplayed('password')" class="invalid-feedback">
+                <small>Password is required</small>
+            </div>
+        </div>
+        <div class="form-group col-md-12 col-xs-12">                  
+            <button type="submit" class="btn btn-success alignCenterBtn c"
+                (click)="login(myForm.value)"
+                [disabled]="myForm.invalid">Login</button>
+        </div>
+    </div>  
+</form>
+
+<div class="modal-notif failure active" [class.active]="showValidationError">
+    <i class="ic"></i><span class="description">{{errorMessage}}</span>
+</div>

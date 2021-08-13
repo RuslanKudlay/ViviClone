@@ -1,0 +1,38 @@
+﻿@using Application.EntitiesModels.Models
+@using Application.EntitiesModels.Models.QueryModels
+@model Application.EntitiesModels.Models.BrandsCategoriesByWares
+
+@{
+    Layout = "_ShopLayout";
+}
+
+<div class="menu-primary">
+    <div class="container">
+        @await Component.InvokeAsync("SideMenuGOWComponent")
+        <a href="#primary-navigation" class="menu-button primary-navigation-button">
+            <span class="flaticon-bars"></span>Main Menu
+        </a>
+    </div>
+</div>
+<div class="main-content categories categories-grid1" style="background-color: #F5F5F5" data-background-color="#F5F5F5">
+    <div class="container">
+        <div class="categories-page">
+            <div class="row">
+                <div class="content col-md-9 has-sidebar-left">
+                    <div class="categories-grid" id="categories-grid">
+                        @await Component.InvokeAsync("AdditionalFiltersComponent", Model.Wares)
+                        <div id="pasteWaresHere">
+                            @await Component.InvokeAsync("WaresComponent", Model.Wares)
+                        </div>
+                        @{await Html.RenderPartialAsync("_Pagination");}
+                    </div>
+                </div>
+                <div class="sidebar col-md-3">
+                    @{await Html.RenderPartialAsync("_SideSearchMenu", Model.SideSearchMenuModel);}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@await Component.InvokeAsync("ShopSliderComponent")

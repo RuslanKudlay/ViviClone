@@ -1,0 +1,23 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title">{{title || "Add Category Value"}}</h4>
+        </div>
+        <div class="modal-body">
+            <form name="addCategoryValues" class="form-horizontal container-fluid" style="margin:15px;" >
+                <div class="col-md-12 col-xs-12 ">                   
+                    <div class="col-md-8 col-md-offset-2 col-xs-12">
+                        <label>Name</label>                    
+                        <input name="Name" class="form-control" type="text" [(ngModel)]="name" />                  
+                    </div>                   
+                </div>  
+            </form>        
+        </div>
+        <div class="modal-footer">
+            <button *ngIf="isUpdate" type="button" class="btn btn-primary" (click)="confirm()">Update</button>
+            <button *ngIf="!isUpdate" type="button" class="btn btn-success" (click)="confirm()">Add</button>
+            <button type="button" class="btn btn-danger" (click)="close()">Cancel</button>
+        </div>
+    </div>
+</div>

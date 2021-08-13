@@ -1,0 +1,19 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ 'Categories' | translate }}</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <h2></h2><a class="btn btn-primary" routerLink="/categories/newCategory">Add New Category</a>
+        </div>
+    </div>
+    <div class="row">    
+        <div class="col-md-12" id="agGrid">
+            <app-ag-grid-helper
+                            [columnDefs]="createColumnDefs()"
+                            [service]="categoryService"
+                            [queryModel]="queryModel">
+            </app-ag-grid-helper>
+        </div>
+    </div>
+</div>

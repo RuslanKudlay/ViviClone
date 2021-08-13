@@ -1,0 +1,31 @@
+﻿@model Application.EntitiesModels.Models.AnnouncementModel
+
+    <link rel="stylesheet" href="~/css/shop.css" />
+
+    @section metatags
+{
+        @if (string.IsNullOrEmpty(Model.MetaKeywords?.Trim()) && !string.IsNullOrEmpty(@Model.MetaKeywords.Trim()))
+        {
+            <meta name="keywords" content="@Model.MetaKeywords" />
+        }
+
+        @if (string.IsNullOrEmpty(Model.MetaDescription?.Trim()) != null && !string.IsNullOrEmpty(@Model.MetaDescription.Trim()))
+        {
+            <meta name="description" content="@Model.MetaDescription" />
+        }
+
+    }
+
+    <div class=" main-content margin-from-menu">
+        <div class="container">
+            <div class="content" style="margin: 0 auto; width: 70%; text-align:center;">
+                <h2 style="margin-bottom: 20px">@Model.Title</h2>
+                <div class="body-content" style="margin-top: 30px; ">
+                    @Html.Raw(Model.Body)
+                </div>
+                <div>
+                    <p>@Html.DisplayFor(modelItem => Model.LastUpdateDate)</p>
+                </div>
+            </div>
+        </div>
+    </div>

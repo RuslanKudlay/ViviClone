@@ -1,0 +1,18 @@
+<div class="card">
+    <div class="row">
+        <!-- <a class="btn btn-xs btn-primary" routerLink="/group-of-wares/newGroupOfWare">Добавить корневую групу товаров</a> -->
+        <a class="btn btn-xs btn-primary" (click)="addParentGow()">Добавить родительскую групу товаров</a>
+
+        <div class="col-md-6">
+            <h2>{{ 'GroupOfWares' | translate }}</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="treeContainer">
+            <div class="brandContainer">
+                <tree-view-gow [gows]="gows" [allGows]="gows">
+                </tree-view-gow>
+            </div>
+        </div>
+    </div>
+</div>

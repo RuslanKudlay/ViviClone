@@ -1,0 +1,28 @@
+﻿@using Application.EntitiesModels.Models
+@model Application.EntitiesModels.Models.BrandModel
+
+@section metatags
+{
+    @if (Model.MetaKeywords != null && !string.IsNullOrEmpty(@Model.MetaKeywords.Trim()))
+    {
+        <meta name="keywords" content="@Model.MetaKeywords" />
+    }
+
+    @if (Model.MetaDescription != null && !string.IsNullOrEmpty(@Model.MetaDescription.Trim()))
+    {
+        <meta name="description" content="@Model.MetaDescription" />
+    }
+}
+
+<div>
+    <div class="container">
+        <div class="" style="background-color:whitesmoke">
+            <h1 class="text-center">@Model.Name</h1>
+            <hr />
+            <h2>@Model.ShortDescription</h2>
+            <p>@Html.Display(Model.Body)</p>
+        </div>
+        @Html.ActionLink("Back", "Index", "Home")
+    </div>
+
+</div>

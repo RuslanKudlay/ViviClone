@@ -1,0 +1,82 @@
+<div class="card">
+    <div id="divDataBody" class="container entity">
+        <div class="row formTitle">
+            <h2 class="title">{{titleStatus}}</h2>
+        </div>
+        <form name="form" (ngSubmit)="f.form.valid && saveOrUpdate()" #f="ngForm" class="form-horizontal container-fluid" [formGroup]="myForm">
+            <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Title*</label>
+                        <input type="text" class="form-control" formControlName="title" (change)="onKeyPostTitle($event.target.value)" />
+                        <div *ngIf="errorDisplayed('title')" class="invalid-feedback">
+                            <small>Title is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>SubUrl*</label>
+                        <input type="text" class="form-control" formControlName="subUrl" />
+                        <div *ngIf="errorDisplayed('subUrl')" class="invalid-feedback">
+                            <small>SubUrl is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>
+                            IsEnable
+                            <input type="checkbox" formControlName="isEnable" />
+                        </label>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Date</label>
+                        <ng-datepicker formControlName="dateCreated"></ng-datepicker>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Last Update Date</label>
+                        <ng-datepicker formControlName="dateModificated"></ng-datepicker>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Post Image </label>
+                        <div class="logo-box" *ngIf="post.imageURL">
+                            <img [src]="post.base64Image" />
+                        </div>
+                        <button type="button" class="btn btn-sm" (click)="showModalImageUploader();">Download</button>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Body</label>
+                        <tinymce-editor-component [elementId]="'post-body'" name="Body" (onEditorContentChange)="postBodyUpdated($event)"
+                                                  [content]="post.body"></tinymce-editor-component>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Meta Keywords </label>
+                        <input type="text" class="form-control" formControlName="metaKeywords" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Meta Description</label>
+                        <textarea rows="2" cols="150" class="form-control" type="text" formControlName="metaDescription"></textarea>
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <button type="submit" class="btn btn-primary alignCenterBtn" [disabled]="myForm.invalid">{{titleStatus}}</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

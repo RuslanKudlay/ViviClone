@@ -1,0 +1,130 @@
+.treenodes {display:table; list-style-type: none; padding-left: 16px; width: 100%;}
+.host .treenodes { padding-left: 0; }
+.treenode { display: table-row; list-style-type: none; }
+.nodebutton { display:table-cell; cursor: pointer; }
+.nodeInfoContainer { display:inline-block; padding-left: 5px; list-style-type: none; width:100%;}
+.nodeInfoContainer input{
+    border: 0;
+    border-bottom: 1px solid #000;
+}
+.nodeInfoContainer svg{  
+    color:green;    
+}
+.nodeInfoContainer .trashIcon svg{
+    color:red;
+}
+.nodeInfoContainer .cancelIcon svg{
+    color:red;
+}
+.nodeInfo{
+    width: 100%;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    padding: 10px;
+    margin-bottom: 10px;
+    -webkit-transition: width 0.5s; 
+    transition: width 0.5s;
+}
+.trashIcon{
+    margin-left:10px;
+}
+
+.treenodes svg{
+    font-size: 16px;
+}
+.treenodes svg:hover{
+    cursor: pointer;
+}
+.nodetext { color: #31708f; padding-left: 3px; padding-right: 3px; cursor: pointer; }
+.nodetext.bg-info { font-weight: bold; }
+.nodetext.text-root { font-size: 16px; font-weight: bold; }
+.pure-checkbox input[type="checkbox"]{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.pure-checkbox  input[type="checkbox"] + label{
+    position: relative;
+    padding-left: 2em;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    margin: 0px;
+    color: #000;
+    font-weight: 300;
+}
+.pure-checkbox  input[type="checkbox"] + label:before{
+    box-sizing: content-box;
+    content: '';
+    color: #0079FE;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: -9px;
+    border: 2px solid #0079FE;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+.pure-checkbox  input[type="checkbox"] + label:after
+{
+    background-color: transparent;
+    top: 50%;
+    left: 4px;
+    width: 8px;
+    height: 3px;
+    margin-top: -4px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 0 0 3px 3px;
+    border-image: none;
+    transform: rotate(-45deg) scale(0);  
+}
+.pure-checkbox  input[type="checkbox"]:checked + label:before
+{
+    animation: borderscale 200ms ease-in;
+    background: #0079FE;
+}
+
+.pure-checkbox label
+{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.pure-checkbox label:hover{
+    cursor: pointer;
+}
+.fa-plus-square-o:before{
+    font-size: 18px;
+    padding: 7px;
+    color:#0079FE;
+}
+.fa-minus-square-o:before{
+    font-size: 18px;
+    padding: 7px;
+    color:#0079FE;
+}
+
+.treeElement{
+    display: block;
+    min-width: 100px;   
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);     
+    padding: 20px;
+    background: #fff;
+    color: rgba(0,0,0,.87);
+}
+.treeParent{
+    position: relative;
+}
+.treeChild{
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+

@@ -1,0 +1,59 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ 'Wares' | translate }}</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <div class="row">
+                <a class="btn btn-primary" (click)="save()">Save</a>
+                <a class="btn btn-primary" (click)="cancel()">Cancel</a>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table my-table-striped table-bordered projects">
+            <thead class="text-primary">
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Vendor code</th>
+                    <th>Is enable</th>
+                    <th>Label</th>
+                    <th>Ware image</th>
+                    <th>Base64</th>
+                    <th>Text</th>
+                    <th>Subur</th>
+                    <th>Meta keywords</th>
+                    <th>Meta description</th>
+                    <th>Average rate</th>
+                    <th>Brand id</th>
+                    <th>Brand name</th>
+                    <th>Category Values</th>
+                    <th>GOWs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ware of importedWares; let i = index" [ngClass]="{changed:isChanged(ware), added:isAdded(ware)}">
+                    <td><span>{{ware.id}}</span></td>
+                    <td><span>{{ware.name}}</span></td>
+                    <td><span>{{ware.price}}</span></td>
+                    <td><span>{{ware.vendorCode}}</span></td>
+                    <td><span>{{ware.isEnable}}</span></td>
+                    <td><span>{{ware.label}}</span></td>
+                    <td><span>{{ware.wareImage}}</span></td>
+                    <td><span>{{ware.base64Image}}</span></td>
+                    <td><span>{{ware.text}}</span></td>
+                    <td><span>{{ware.subUrl}}</span></td>
+                    <td><span>{{ware.metaKeywords}}</span></td>
+                    <td><span>{{ware.metaDescription}}</span></td>
+                    <td><span>{{ware.averageRate}}</span></td>
+                    <td><span>{{ware.brandId}}</span></td>
+                    <td><span>{{ware.brandName}}</span></td>
+                    <td><span>{{showNames(ware.categoryValues)}}</span></td>
+                    <td><span>{{showNames(ware.gows)}}</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div> 

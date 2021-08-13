@@ -1,0 +1,49 @@
+﻿@model Application.EntitiesModels.Models.QueryModels.QueryWaresModel
+
+<div id="products" class="products-categories" style="width:100%;">
+    @if (Model.Result != null && Model.Result.Count > 0)
+    {
+        <div id="resultCountItems" totalCount="@Model.ResultCount">
+            Всего товаров: @Model.ResultCount
+        </div>
+        <div id="minPriceWare" min="@Model.MinPrice" class="hideElement">
+        </div>
+        <div id="maxPriceWare" max="@Model.MaxPrice" class="hideElement">
+        </div>
+        @foreach (var item in Model.Result)
+        {
+                <div class="product-box  @(item.IsEnable ? "visible" : "hidden")">
+                    <div class="product-box-content hover-card">
+
+                        <a href="@Url.Action("WareDetails", "Shop", new { subUrl = item.SubUrl }, null)">
+                            <figure class="img-product">
+                                <img style="cursor:pointer" src="" class="loadImage" data-imageUrl="@item.WareImage" alt="product" height="207" width="175" />
+                            </figure>
+                        </a>
+
+                        <div class="product-box-text">
+                            <a href="@Url.Action("WareDetails", "Shop", new { subUrl = item.SubUrl }, null)" class="product-name">@item.Name</a>
+                            <p class="product-cost">@item.Price UAH</p>
+                            <div style="max-height:24px;overflow:hidden;text-overflow:ellipsis;white-space: nowrap;">
+                                @Html.Raw(item.Text)
+                            </div>
+                            <div class="product-box-bottom">
+                                @*To disable btn's non authorize @if (Context.User.Identity.IsAuthenticated)
+                                    {*@
+                                <a href="javascript:void(0)" class="add-to-cart add-to-basket" data-subUrl="@item.SubUrl"><i class="flaticon-commerce"></i>Add To Cart</a>
+                                <a href="@Url.Action("AddWareToWishList", "Shop", item, null)" class="wishlist"><i class="flaticon-like"></i></a>
+                                <a href="javascript:void(0)" class="refresh-product"><i class="flaticon-arrows"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        }
+    }
+    else
+    {
+        <div class="col-md-12">
+            Товар не был найден
+        </div>
+    }
+</div>

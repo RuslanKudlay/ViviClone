@@ -1,0 +1,40 @@
+form {
+    background: #FFFFFF;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.15);
+    max-width: 400px;
+}
+
+
+.modal-notif {
+    position: fixed;
+    display: block;
+    padding: 14px 37px;
+    z-index: 3;
+    bottom: 45px;
+    right: -100%;
+    opacity: 0;
+    background-color: #fff;
+    border-bottom-left-radius: 6px;
+    border-top-left-radius: 6px;
+    box-shadow: 0 4px 30px rgba(204, 204, 204, 0.6);
+    transition: all 0.28s ease-in-out;
+    -webkit-transition: all 0.28s ease-in-out;
+  }
+  
+.modal-notif.active {
+    right: -1px;
+    opacity: 1;
+}
+
+.modal-notif .description {
+    display: inline-block;
+    vertical-align: middle;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+}
+
+.modal-notif.failure .description {
+    color: #c0392b;
+}
+  

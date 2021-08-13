@@ -1,0 +1,129 @@
+﻿<!-- begin:header-title -->
+@*<div class="row">
+        <div class="col-md-12">
+            <div class="content-article">
+                <div class="heading-title">
+                    <h2>Contact <small>I'm The Awesomest Artist</small></h2>
+                </div>
+                <!-- begin:single-cat-and-breadcrumb -->
+                <div class="row">
+                    <div class="col-md-5 col-sm-5 hidden-xs">
+                        <div class="single-cat-title">
+                            <h4>Page Contact</h4>
+                        </div>
+                    </div>
+                    <div class="col-md-7 col-sm-7 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href='@Url.Action("Index", "Home")'>Home</a></li>
+                            <li class="active">Contact</li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- end:single-cat-and-breadcrumb -->
+            </div>
+        </div>
+    </div>
+    <!-- end:header-title -->
+    <!-- begin:main-section -->
+    <div class="row">
+        <!-- begin:article -->
+        <div class="col-md-12">
+            <!-- begin:contact -->
+            <div class="content-article">
+                <div class="row">
+                    <!-- begin:map -->
+                    <div class="col-md-8 col-sm-7 col-xs-12">
+                        <div id="mapContainer">
+                            <div id="map"></div>
+                        </div>
+                    </div>
+                    <!-- end:map -->
+                    <!-- begin:contact-form -->
+                    <div class="col-md-4 col-sm-5 col-xs-12">
+                        @using (Html.BeginForm("Feedback", "Home", FormMethod.Post))
+                        {
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Name <sup class="text-secondary"><i class="fa fa-asterisk"></i></sup></label>
+                                        <input name="Name" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="name">Email <sup class="text-secondary"><i class="fa fa-asterisk"></i></sup></label>
+                                        <input name="UserEmail" type="email" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="telephone">Telephone <sup class="text-secondary"><i class="fa fa-asterisk"></i></sup></label>
+                                        <input name="Phone" type="text" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label for="name">Message <sup class="text-secondary"><i class="fa fa-asterisk"></i></sup></label>
+                                        <textarea name="Message" rows="5" class="form-control" required></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-secondary"><i class="fa fa-envelope-o"></i> Send</button>
+                        }
+                    </div>
+                    <!-- end:contact-form -->
+                </div>
+            </div>
+            <!-- end:contact -->
+        </div>
+        <!-- end:article -->
+    </div>*@
+<!-- end:main-section -->
+<div class="container container-bg-color margin-from-menu">
+    <section id="contact-info" class="row ptb ptb-sm-80" style="height:200px; padding: 0px 80px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="contact-box-left">
+                        <div class="contact-icon-left"><i class="ion ion-ios-location"></i></div>
+                        <h3>Address</h3>
+                        <p>
+                            502, DieSachbearbeiter, Schönhauser Allee, 167c10435 Berlin,Germany.
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-box-left">
+                        <div class="contact-icon-left"><i class="ion ion-ios-telephone"></i></div>
+                        <h3>Call Us</h3>
+                        <p>
+                            <a href="tel:0800309919">0 800 30-99-19</a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="contact-box-left">
+                        <div class="contact-icon-left"><i class="ion ion-ios-email"></i></div>
+                        <h3>Email</h3>
+                        <p>
+                            <a href="mailto:yourname@domain.com">yourname@domain.com</a>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="map row">
+        <div id="map" style="position: relative; overflow: hidden;">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.9189885042438!2d35.04289681566017!3d48.45808387925024!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40dbe2df164d6e91%3A0x5ef5eedbbc14108e!2z0YPQuy4g0KHQstGP0YLQvtGB0LvQsNCy0LAg0KXRgNCw0LHRgNC-0LPQviwgMTAsINCU0L3QuNC_0YDQviwg0JTQvdC10L_RgNC-0L_QtdGC0YDQvtCy0YHQutCw0Y8g0L7QsdC70LDRgdGC0YwsIDQ5MDAw!5e0!3m2!1sru!2sua!4v1605537184162!5m2!1sru!2sua" width="100%" height="450" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+    </section>
+</div>

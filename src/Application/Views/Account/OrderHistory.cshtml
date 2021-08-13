@@ -1,0 +1,20 @@
+﻿@model object
+@{
+    Layout = "_ShopLayout";
+
+}
+<div class="row">
+    <div class="col-md-12 accountInfoContainer">
+        <div class="col-md-2">
+            <nav>
+                <ul>
+                    <li><a href="@Url.Action("Details")">Личные данные</a></li>
+                    <li><a href="@Url.Action("OrderHistoryDetails")">Мои заказы</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-md-9">
+            @await Component.InvokeAsync("OrderHistoryComponent")
+        </div>
+    </div>
+</div>

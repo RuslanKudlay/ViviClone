@@ -1,0 +1,18 @@
+.container-fluid {
+    display: inline-block;
+    position: relative;
+    margin: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.075);
+    border-radius: 6px;
+    color: rgba(0,0,0, 0.87);
+    background: #fff;
+    padding: 25px;
+}
+
+.changed {
+    background: #f8ff9d;
+}
+
+.added {
+    background: #c4ff9b;
+}

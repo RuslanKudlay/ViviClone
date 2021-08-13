@@ -1,0 +1,43 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ 'WaresCategoryValues' | translate }}</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <h2></h2><a class="btn btn-primary" routerLink="/wares-category-values/0">Add Wares Category Values</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Id</th>
+                        <th>Ware</th>
+                        <th>Category Values</th>                    
+                        <th></th>            
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let waresCategoryValue of waresCategoryValues; let i = index">
+                        <td><span class="badge">{{waresCategoryValue.id}}</span></td>
+                        <td>{{waresCategoryValue.ware.name }}</td>                   
+                        <td>{{waresCategoryValue.categoryValue.name}}</td>                    
+                        <td>
+                            <a class="btn btn-xs btn-primary" routerLink="/wares-category-values/{{waresCategoryValue.id}}">
+                                Edit
+                            </a>
+                            <a class="btn btn-xs btn-danger" (click)="delete(waresCategoryValue.id, i)">
+                                Del
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="row">
+        
+    </div>
+</div>

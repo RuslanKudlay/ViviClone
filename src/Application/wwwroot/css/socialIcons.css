@@ -1,0 +1,39 @@
+﻿.btn-facebook {
+    background: url('../img/fb.png') #428bca;
+    background-position: -9px -7px;
+    background-repeat: no-repeat;
+    background-size: 39px 43px;
+    padding-left: 41px;
+    color: #ffffff;
+}
+
+    .btn-facebook:hover {
+        background: url('../img/fb.png') #428bca;
+        background-position: -9px -7px;
+        background-repeat: no-repeat;
+        background-size: 39px 43px;
+        padding-left: 41px;
+        color: #000;
+    }
+
+.btn-google {
+    background: url('../img/gPlus.png') #428bca;
+    background-position: -9px -7px;
+    background-repeat: no-repeat;
+    background-size: 39px 43px;
+    padding-left: 41px;
+    color: #ffffff;
+}
+
+    .btn-google:hover {
+        background: url('../img/gPlus.png') #428bca;
+        background-position: -9px -7px;
+        background-repeat: no-repeat;
+        background-size: 39px 43px;
+        padding-left: 41px;
+        color: #000;
+    }
+
+.social .btn-facebook {
+    margin-top: 31px;
+}

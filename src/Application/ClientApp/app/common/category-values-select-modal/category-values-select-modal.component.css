@@ -1,0 +1,83 @@
+ .modal-dialog{
+    margin-top:10%;
+ }
+ .modal-content{
+    max-width: 400px;
+    left:50%;
+ }
+ .modal-body ul{
+    padding: 0px;
+    list-style: none;
+    overflow: auto;
+    margin:0 auto;    
+
+}
+.categoryValuesContainer ul li{
+    padding: 10px 10px;
+    cursor: pointer;
+    text-align: left;
+}
+.pure-checkbox input[type="checkbox"]{
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+.pure-checkbox  input[type="checkbox"] + label{
+    position: relative;
+    padding-left: 2em;
+    vertical-align: middle;
+    user-select: none;
+    cursor: pointer;
+    margin: 0px;
+    color: #000;
+    font-weight: 300;
+}
+.pure-checkbox  input[type="checkbox"] + label:before{
+    box-sizing: content-box;
+    content: '';
+    color: #0079FE;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 14px;
+    height: 14px;
+    margin-top: -9px;
+    border: 2px solid #0079FE;
+    text-align: center;
+    transition: all 0.4s ease;
+}
+.pure-checkbox  input[type="checkbox"] + label:after
+{
+    background-color: transparent;
+    top: 50%;
+    left: 4px;
+    width: 8px;
+    height: 3px;
+    margin-top: -4px;
+    border-style: solid;
+    border-color: #ffffff;
+    border-width: 0 0 3px 3px;
+    border-image: none;
+    transform: rotate(-45deg) scale(0);  
+}
+.pure-checkbox  input[type="checkbox"]:checked + label:before
+{
+    animation: borderscale 200ms ease-in;
+    background: #0079FE;
+}
+
+.pure-checkbox label
+{
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+.pure-checkbox label:hover{
+    cursor: pointer;
+}

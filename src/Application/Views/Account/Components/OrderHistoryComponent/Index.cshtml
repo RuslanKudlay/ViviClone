@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Application.EntitiesModels.Models.OrderModels.OrderModel>
+
+<div class="shop-table-content container">
+    <div class="shoping-form">
+        <div class="div-table-cart">
+             <table class="shop_table cart orderTable">
+                  <thead>
+                      <tr>
+                          <th class="product-thumbnail" colspan="6">Номер заказа</th>
+                          <th class="product-thumbnail" colspan="2">Статус</th>
+                          <th class="product-thumbnail" colspan="2">&nbsp;</th>
+                      </tr>
+                </thead>
+                <tbody>
+                @foreach (var order in Model)
+                    {
+                        <tr class="orderRow row-for-detail-@order.OrderNumber" onclick="displayDetails('detail-@order.OrderNumber')">
+                            <td colspan="6">@order.OrderNumber</td>
+                            <td colspan="2">@order.Status</td>
+                            <td colspan="2"><span style="font-size:16px"class="glyphicon glyphicon-plus"></span></td>
+                        </tr>
+                        <tr class="orderTableDetails" id="detail-@order.OrderNumber">
+                            <td colspan="10">
+                                <table class="shop_table cart">
+                                    <thead>
+                                        <tr>
+                                            <th class="product-thumbnail">Изображение</th>                                            
+                                            <th class="product-name">Название товара</th>
+                                            <th class="product-price">Цена</th>
+                                            <th class="product-quantity">Кол-во</th>                                           
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                      @foreach(var orderDetails in order.OrderDetails)
+                                      {                               
+                                
+                                                <tr class="cart_item">                                       
+                                                    <td class="product-thumbnail" data-title="">
+                                                        <a href="">
+                                                            <img height="150" width="185" alt="s_c" class="attachment-shop_thumbnail wp-post-image loadImage" data-imageUrl="@orderDetails.Ware.WareImage" />
+                                                        </a>
+                                                    </td>
+                                                    <td class="product-name" data-title="Product Name">
+                                                        <span>@orderDetails.Ware.Name</span>
+                                                    </td>                               
+                                                    <td class="product-price" data-title="Unit Price">
+                                                        <span class="amount">@orderDetails.Ware.Price UAH</span>
+                                                    </td>
+                                                    <td class="product-quantity" data-title="Qty">
+                                                        <span>@orderDetails.Count</span>
+                                                    </td>                                       
+                                                </tr>    
+                                 
+                                        }
+                                     </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+             </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function displayDetails(detailsId) {
+        let element = $("#" + detailsId);
+        let iconElement = $(".row-for-" + detailsId).find("span");
+
+        if (element.hasClass("isDisplay")) {            
+            iconElement.removeClass("glyphicon-minus")
+            iconElement.addClass("glyphicon-plus")
+            element.removeClass("isDisplay")          
+            element.css({ "display": "none" });
+        }
+
+        else {
+            iconElement.removeClass("glyphicon-plus")
+            iconElement.addClass("glyphicon-minus")         
+            element.addClass("isDisplay")
+            element.css({ "display" : "table-row"})
+        }      
+            
+    }
+</script>

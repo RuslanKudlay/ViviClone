@@ -1,0 +1,179 @@
+
+    <div id="divDataBody" class="col-md-12 entity">
+        <ul class="nav nav-tabs">
+            <li class="active li-nav"><a data-toggle="tab" href="#info">Main info</a></li>
+            <li class="li-nav"><a data-toggle="tab" href="#groups">Groups</a></li>
+            <li class="li-nav"><a data-toggle="tab" href="#categories">Categories</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="info" class="tab-pane fade in active">
+                <form name="addWare" class="form-horizontal container-fluid formContainer" [formGroup]="myForm">
+                    <div class="row formTitle">
+                        <h2 class="title">{{titleStatus}}</h2>
+                    </div>
+                    <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Brand*</label>
+                                <select formControlName="brandId" class="form-control" required>
+                                    <option *ngFor="let brand of brands; let i = index" class="form-control" [value]="brand.id">
+                                        {{ brand.name }}
+                                    </option>
+                                </select>
+                                <div *ngIf="errorDisplayed('brandId')" class="invalid-feedback">
+                                    <small>Brand is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Name*</label>
+                                <input type="text" class="form-control" formControlName="name" (input)="onKeyWareName ($event.target.value)" />
+                                <div *ngIf="errorDisplayed('name')" class="invalid-feedback">
+                                    <small>Name is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>SubUrl*</label>
+                                <input type="text" class="form-control" formControlName="subUrl" />
+                                <div *ngIf="errorDisplayed('subUrl')" class="invalid-feedback">
+                                    <small>SubUrl is required</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>IsEnable</label>
+                                <input type="checkbox" formControlName="isEnable" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>IsOnlyForProfessionals</label>
+                                <input type="checkbox" formControlName="IsOnlyForProfessionals" />
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>IsBestseller</label>
+                                <input type="checkbox" formControlName="isBestseller" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-6 col-xs-6">
+                                <label>Price*</label>
+                                <input class="form-control" type="number" step="0.01" min="0" formControlName="price" required />
+                            </div>
+                            <div *ngIf="errorDisplayed('price')" class="invalid-feedback">
+                                <small>Incorrect price</small>
+                            </div>
+                            <div class="form-group col-md-5 col-xs-5">
+                                <label></label>
+                                <select class="form-control" name="selectCurrency " tabindex="-1">
+                                    <option value="UAH">
+                                        UAH
+                                    </option>
+                                    <option value="USD">
+                                        USD
+                                    </option>
+                                    <option value="EUR">
+                                        EUR
+                                    </option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Vendor Code</label>
+                                <textarea rows="1" cols="150" class="form-control" type="text" formControlName="vendorCode"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Logo Image </label>
+                                <div class="logo-box" *ngIf="ware.base64Image">
+                                    <img [src]="ware.base64Image" />
+                                </div>
+                                <button type="button" class="btn btn-sm" (click)="showModalImageUploader();">Load logo</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-xs-12">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Body </label>
+                                <tinymce-editor-component [elementId]="'ware-text'" (onEditorContentChange)="wareBodyUpdated($event)"
+                                                          [content]="ware.text "></tinymce-editor-component>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Meta Keywords </label>
+                                <input class="form-control" type="text" formControlName="metaKeywords" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xs-6">
+                            <div class="form-group col-md-12 col-xs-12">
+                                <label>Meta Description</label>
+                                <textarea rows="1" cols="150" class="form-control" type="text" formControlName="metaDescription"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="groups" class="tab-pane fade">
+                <div class="col-md-12 formContainer">
+                    <div class="row formTitle">
+                        <h2 class="title">Groups Of Ware</h2>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="dropdown">
+                            <div class="treeContainer">
+                                <div class="brandContainer">
+                                    <tree-view-gow-select [allGroupOfWares]="groupOfWares"
+                                                          [groupOfWares]="groupOfWares"
+                                                          [(selectedGroupOfWares)]="ware.gows">
+                                    </tree-view-gow-select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+            <div id="categories" class="tab-pane fade" *ngIf="titleStatus == 'Update Ware'; else elseBlock">
+                <category-select *ngIf="ware.name" [ware]="ware"
+                                 (onSelectedChanged)="selectedCategoryValues($event)">
+                </category-select>
+            </div>
+            <ng-template #elseBlock>
+                <div id="categories" class="tab-pane fade">
+                    <category-select [ware]="ware"
+                                     (onSelectedChanged)="selectedCategoryValues($event)">
+                    </category-select>
+                </div>
+            </ng-template>
+        </div>
+
+        <div class="col-md-12 col-xs-12">
+            <div class="form-group col-md-12 col-xs-12">
+                <button type="submit" class="btn btn-success alignCenterBtn c"
+                        [style.visibility]="(ware.id > 0) ? 'hidden' : 'visible' "
+                        (click)="addWare()"
+                        [disabled]="myForm.invalid">
+                    Save
+                </button>
+                <button class="btn btn-primary  alignCenterBtn "
+                        [style.visibility]="(ware.id > 0) ? 'visible' : 'hidden' "
+                        (click)="updateWare()"
+                        [disabled]="myForm.invalid">
+                    Update
+                </button>
+            </div>
+        </div>
+    </div>
+

@@ -1,0 +1,27 @@
+﻿@using AspNetCore
+@model IEnumerable<Application.EntitiesModels.Models.BrandModel>
+@{
+
+    Layout = "_Layout";
+}
+<div class="container margin-from-menu">
+    <div class="row">
+        <ul class="list-unstyled" style="display:flex; flex-wrap: wrap; padding: 5px 15px; justify-content: space-around">
+            @foreach (var item in Model)
+            {
+                if (item.IsEnable)
+                {
+                    <li style="margin-top: 20px; width: 26%; display: flex; flex-direction: column; justify-content: space-between;">
+                        <a href="@Url.Action("BrandDetails", "Brand", new { subUrl = item.SubUrl }, null)">
+                            <img style="max-height: 180px; height: 180px; width: 100%" class="loadImage hover-card" src=" " data-imageUrl="@item.LogoImage" alt="">
+                        </a>
+                        <div class="">
+                            <h4 style="text-align: center">@item.Name</h4>
+                            @item.ShortDescription
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

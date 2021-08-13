@@ -1,0 +1,59 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.AdditionalFilters
+
+<div class="panel-categories">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="view-categories">
+                <div class="click-grid color-active">
+                    <i class="flaticon-four-grid-layout-design-interface-symbol"></i>
+                </div>
+                <div class="click-list">
+                    <i class="flaticon-squares-gallery-grid-layout-interface-symbol"></i>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="select-categories">
+                <div class="select-categories-content">
+                    <span>Сортировать по</span>
+                    <select name="position" id="sortingSelect">
+                        @foreach (var sortBy in Model.SortBy)
+                        {
+                            <optgroup label="@sortBy.NameGroup">
+                                @foreach (var param in sortBy.SortBy)
+                                {
+                                    if (param.IsSelected)
+                                    {
+                                        <option value="@param.Value" selected>@Html.Raw(param.Name)</option>
+                                    }
+                                    else
+                                    {
+                                        <option value="@param.Value">@Html.Raw(param.Name)</option>
+                                    }
+                                }
+                            </optgroup>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="select-categories-content">
+                <span>Показать</span>
+                <select name="show" id="showWaresCount">
+                    @foreach (var takeItem in Model.TakeItems)
+                    {
+                        if (takeItem.IsSelected)
+                        {
+                            <option value="@takeItem.Value" selected>@takeItem.Value</option>
+                        }
+                        else
+                        {
+                            <option value="@takeItem.Value">@takeItem.Value</option>
+                        }
+                    }
+                </select>
+            </div>
+        </div>
+    </div>
+</div>

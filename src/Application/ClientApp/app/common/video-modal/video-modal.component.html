@@ -1,0 +1,14 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Enter the video url</h4>
+        </div>
+        <div class="modal-body">
+            <input [(ngModel)]="url">              
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-success" (click)="confirm()">Add</button>
+            <button type="button" class="btn btn-danger" (click)="close()">Cancel</button>
+        </div>
+    </div>
+</div>

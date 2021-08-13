@@ -1,0 +1,45 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.SideSearchMenuModel
+
+@if (Model.WareCategoryValues != null)
+{
+    @foreach (var item in Model.WareCategoryValues)
+    {
+        <div class="categories-sidebar">
+            <div class="sidebar-title-section">@item.Category.Name</div>
+            <div class="categories-checkbox filter-params">
+                <ul class="categories-list-wrap">
+                    @foreach (var categoryValue in item.CategoryValues)
+                    {
+                        <li class="@(categoryValue.CategoryValue.IsDisabled == true ? "disabled-button" : "")">
+                            <div class="checkbox_filter_category @(categoryValue.IsSelected ? "filter_checked" : "")" data-search-key="@item.Category.Name" data-search-value="@categoryValue.CategoryValue.Name" id="@("checkbox_" + categoryValue.CategoryValue.Name)"></div>
+                            <span class="checkbox_filter_title_category" data-search-key="@item.Category.Name" data-search-value="@categoryValue.CategoryValue.Name">@categoryValue.CategoryValue.Name</span>
+
+                            @if (categoryValue.CategoryValue.IsDisabled == false)
+                            {
+                                <span class="countOfWare">(@categoryValue.Count)</span>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+    @if (this.User.IsInRole("Professional") || this.User.IsInRole("Admin"))
+    {
+        <div class="proff-sidebar">
+            <div class="categories-checkbox filter-params proff-sidebar-body">
+                <ul class="categories-list-wrap">
+                    <li class="@(Model.Professional.IsDisabled ? "disabled-button" : "")">
+                        <div class="checkbox_filter_proff @(Model.Professional.IsSelected ? "filter_checked" : "")" data-search-key="@Model.Professional.Name" data-search-value="@true"></div>
+                        <span class="checkbox_filter_title_proff" data-search-key="@Model.Professional.Name" data-search-value="@true">Профессиональный уход</span>
+
+                        @if (!Model.Professional.IsDisabled)
+                        {
+                            <span class="countOfWare">(@Model.Professional.Count)</span>
+                        }
+                    </li>
+                </ul>
+            </div>
+        </div>
+    }
+}

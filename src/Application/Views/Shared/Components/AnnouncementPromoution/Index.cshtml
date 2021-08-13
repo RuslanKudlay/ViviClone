@@ -1,0 +1,56 @@
+﻿@model Application.EntitiesModels.Models.NewsModel
+
+
+<div>
+    @if (@Model.Announcements.Count > 0 && Model.Promotions.Count > 0)
+    {
+        <div id="sg-carousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                <li data-target="#carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#carousel" data-slide-to="1" class=""></li>
+                @if (@Model.Announcements.Count > 1 && Model.Promotions.Count > 1)
+                {
+                    <li data-target="#carousel" data-slide-to="2" class=""></li>
+                    <li data-target="#carousel" data-slide-to="3" class=""></li>
+                }
+            </ol>
+            <!-- Carousel items -->
+            <div class="carousel-inner carousel-zoom">
+                <div class="item active">
+                    <img class="" src="https://ununsplash.imgix.net/photo-1416339134316-0e91dc9ded92?q=75&fm=jpg&s=883a422e10fc4149893984019f63c818" alt="">
+                    <div class="carousel-caption animated slideInUp">
+                        <h1 data-animation="animated zoomInLeft" class="cap-txt">@Model.Announcements.ToArray()[0].Title</h1>
+                        <p data-animation="animated bounceInDown">@Model.Announcements.ToArray()[0].Body</p>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="" src="https://images.pexels.com/photos/48726/pexels-photo-48726.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" alt="">
+                    <div class="carousel-caption animated slideInUp">
+                        <h1 data-animation="animated zoomInLeft" class="cap-txt">@Model.Promotions.ToArray()[0].Title</h1>
+                        <p data-animation="animated bounceInDown">@Model.Promotions.ToArray()[0].Body</p>
+                    </div>
+                </div>
+                @if (@Model.Announcements.Count > 1 && Model.Promotions.Count > 1)
+                {
+                    <div class="item">
+                        <img class="" src="https://ununsplash.imgix.net/photo-1416339276121-ba1dfa199912?q=75&fm=jpg&s=9bf9f2ef5be5cb5eee5255e7765cb327" alt="">
+                        <div class="carousel-caption animated slideInLeft">
+                            <h1 data-animation="animated zoomInLeft" class="cap-txt">@Model.Announcements.ToArray()[1].Title</h1>
+                            <p data-animation="animated bounceInDown">@Model.Announcements.ToArray()[1].Body</p>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <img class="" src="https://ununsplash.imgix.net/photo-1416339276121-ba1dfa199912?q=75&fm=jpg&s=9bf9f2ef5be5cb5eee5255e7765cb327" alt="">
+                        <div class="carousel-caption animated slideInLeft">
+                            <h1 data-animation="animated zoomInLeft" class="cap-txt">@Model.Promotions.ToArray()[1].Title</h1>
+                            <p data-animation="animated bounceInDown">@Model.Promotions.ToArray()[1].Body</p>
+                        </div>
+                    </div>
+                }
+                <!-- Carousel nav -->
+                <a class="carousel-control left" href="#sg-carousel" data-slide="prev"><h2>‹</h2></a>
+                <a class="carousel-control right set-z-index" href="#sg-carousel" data-slide="next"><h2>›</h2></a>
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,47 @@
+﻿@model Application.EntitiesModels.Models.WishListModel
+
+@if (Model.WishListWareModel != null && Model.WishListWareModel.Count > 0)
+{
+    <h1>
+        @Model.Name
+    </h1>
+
+    <hr />
+    <hr />
+
+    foreach (var wishWare in Model.WishListWareModel)
+    {
+
+        <div class="product-box @(wishWare.Ware.IsEnable ? "visible" : "hidden")">
+            <div class="product-box-content">
+                <figure class="img-product">
+                    <img src="" class="loadImage" data-imageUrl="@wishWare.Ware.WareImage" alt="product" height="207" width="175" />
+                    <a href="@Url.Action("WareDetails", "Shop", new { subUrl = wishWare.Ware.SubUrl }, null)" class="flaticon-search"></a>
+                </figure>
+
+                <div class="product-box-text">
+                    <a href="#" class="product-name">@wishWare.Ware.Name</a>
+                    <p class="product-cost">@wishWare.Ware.Price UAH</p>
+
+                    <div class="product-box-bottom">
+                        <a href="@Url.Action("RemoveWareFromList", "Shop", new { wareId = wishWare.Id }, null)"><i class="fa-remove"></i>Remove</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div>
+        Total price - @Model.TotalPrice
+    </div>
+
+    <div>
+        Total items - @Model.WishListWareModel.Count
+    </div>
+}
+else
+{
+    <div style="color: red">
+        You don't have any items in wish list!
+    </div>
+}

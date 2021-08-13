@@ -1,0 +1,16 @@
+﻿@*@model IEnumerable<Application.Models.ArticleModel>*@
+
+<div class="col-md-3 col-sm-6 col-xs-12">
+    <div class="widget-footer widget_comments">
+        <div class="widget-title">
+            <h3>Recent Discuss</h3>
+        </div>
+
+        <ul>
+            @foreach (var article in Model)
+            {
+                <li><a href='@Url.Action("About", "Home")'>Andrii</a> On <a href='@Url.Action("Index", "Article", new {url = article.SubUrl})'>@article.Title</a></li>
+            }
+        </ul>
+    </div>
+</div>

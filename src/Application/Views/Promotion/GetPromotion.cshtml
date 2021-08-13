@@ -1,0 +1,24 @@
+﻿@model Application.EntitiesModels.Models.PromotionModel
+
+@section metatags
+{
+    @if (Model.MetaKeywords != null && !string.IsNullOrEmpty(@Model.MetaKeywords.Trim()))
+    {
+        <meta name="keywords" content="@Model.MetaKeywords" />
+    }
+
+    @if (Model.MetaDescription != null && !string.IsNullOrEmpty(@Model.MetaDescription.Trim()))
+    {
+        <meta name="description" content="@Model.MetaDescription" />
+    }
+}
+
+<div class="container">
+    <div class="row">
+        <h2>@Html.DisplayFor(modelItem => Model.Title)</h2>
+        <p>@Html.DisplayFor(modelItem => Model.Body)</p>
+    </div>
+    <div class="row">
+        <p>@Html.DisplayFor(modelItem => Model.LastUpdateDate)</p>
+    </div>
+</div>

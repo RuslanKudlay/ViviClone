@@ -1,0 +1,117 @@
+<div id="divDataBody" class="card">
+    <div class="row formTitle">
+        <h2 class="title">{{title}}</h2>
+    </div>
+    <form name="addBrand" class="form-horizontal container-fluid" [formGroup]="myForm">
+        <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Name*</label>
+                    <input type="text" class="form-control" formControlName="name" (input)="onKeyBrandName ($event.target.value)"/>
+                    <div *ngIf="errorDisplayed('name')" class="invalid-feedback">
+                        <small>Name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>SubUrl*</label>
+                    <input type="text" class="form-control" formControlName="subUrl" (input)="onKeyBrandName ($event.target.value)"/>
+                    <div *ngIf="errorDisplayed('subUrl')" class="invalid-feedback">
+                        <small>SubUrl is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>
+                        IsEnable
+                        <input type="checkbox" formControlName="isEnable" />
+                    </label>
+                </div>               
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Position (required)</label>
+                    <input type="number" class="form-control" formControlName="position" />
+                </div>         
+            </div>
+            <div class="col-md-6 col-xs-6">                  
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Color</label>                       
+                        <input name="Color"  class="form-control" *ngIf="!showColorPicker" type="text" [value]="brand.color" [style.background]="brand.color" (click)='showCP()' />
+                        <input name="Color" id="ColorSet" *ngIf="showColorPicker"  class="form-control"
+                                [(colorPicker)]="brand.color" [style.background]="brand.color" [value]="brand.color"
+                                [cpOutputFormat]="'hex'"
+                                [cpToggle]="true"
+                                [cpPresetLabel]="'Preset colors'"
+                                [cpPresetColors]="['#fff', '#000','#ff0000','#00cc66','#0066ff','#fd0']" />
+                       
+                    </div>
+            </div>
+            <div class="col-md-6 col-xs-6">  
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Title text color</label>                   
+                    <input name="titleColor" *ngIf="!showColorTextPicker" class="form-control " type="text" [value]="brand.colorTitle" [style.background]="brand.colorTitle" (click)='showCTP()' />
+                    <input name="titleColor" id="colorTextSet" *ngIf="showColorTextPicker" class="form-control"
+                            [(colorPicker)]="brand.colorTitle" [style.background]="brand.colorTitle" [value]="brand.colorTitle"
+                            [cpOutputFormat]="'hex'"
+                            [cpFallbackColor]="brand.colorTitle"
+                            [cpToggle]="true"
+                            [cpPresetLabel]="'Preset colors'"
+                            [cpPresetColors]="['#fff', '#000','#ff0000','#00cc66','#0066ff','#fd0']" />
+                   
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Short Description*</label>
+                    <textarea rows="3" cols="220" class="form-control" type="text" formControlName="shortDescription"></textarea>
+                    <div *ngIf="errorDisplayed('shortDescription')" class="invalid-feedback">
+                        <small>Short Description is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Body </label>
+                    <tinymce-editor-component [elementId]="'brand-body'" (onEditorContentChange)="brandBodyUpdated($event)"
+                                                [content]="brand.body "></tinymce-editor-component>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Logo Image </label>
+                    <div class="logo-box" *ngIf="brand.base64Image">
+                        <img [src]="brand.base64Image" />
+                    </div>
+                    <button type="button" class="btn btn-sm" (click)="showModalImageUploader();">Load logo</button>                        
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Meta Keywords </label>
+                    <input type="text" class="form-control" formControlName="metaKeywords" />
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Meta Description</label>
+                    <textarea rows="1" cols="150" class="form-control" type="text" formControlName="metaDescription"></textarea>
+                </div>
+            </div> 
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">                  
+                    <button type="submit" class="btn btn-success alignCenterBtn c"
+                        [style.visibility]="(brand.id > 0) ? 'hidden' : 'visible' "
+                        (click)="addBrand()"
+                        [disabled]="myForm.invalid">Save</button>
+                    <button class="btn btn-primary  alignCenterBtn "
+                        [style.visibility]="(brand.id > 0) ? 'visible' : 'hidden' "
+                        (click)="updateBrand()"
+                        [disabled]="myForm.invalid">Update</button>
+                </div>
+            </div>    
+        </div>  
+    </form>
+</div>

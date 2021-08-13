@@ -1,0 +1,114 @@
+﻿@using Application.EntitiesModels.Models
+@using Application.EntitiesModels.Models.ViewsModel.RegistrationModels
+@using Application.EntitiesModels.Entities
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Program> Localizer
+@inject SignInManager<ApplicationUser> SignInManager
+
+
+@{string errorLogin = "none", errorRegistration = "none"; string[] errors = null;}
+@if (TempData.Count != 0)
+{
+    if (TempData.Keys.Contains("errorLogin"))
+    {
+        errorLogin = TempData["errorLogin"].ToString();
+    }
+    else if (TempData.Keys.Contains("errorRegistration"))
+    {
+        errorRegistration = "true";
+        errors = TempData["errorRegistration"].ToString().Split(";");
+    }
+}
+
+<div class="modal fixWindowModal" id="authorization" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog" aria-labelledby="authorizationModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["Enterence"].Value</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeAuthorizationModalWindow">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <nav>
+                    <div class="nav justify-content-center nav-tabs " id="nav-tab" role="tablist">
+                        <a class="@((errorLogin == "Failed Login" || TempData.Keys.Contains("openLoginTab")) ? "nav-item nav-link" : "nav-item nav-link active")"
+                           id="nav-home-tab" data-toggle="tab" href="#nav-sign-up" role="tab" aria-controls="nav-sign-up" aria-selected="true">@Localizer["Registration"].Value</a>
+                        <a class="@((errorLogin == "Failed Login" || TempData.Keys.Contains("openLoginTab")) ? "nav-item nav-link active" : "nav-item nav-link")"
+                           id="nav-profile-tab" data-toggle="tab" href="#nav-sign-in" role="tab" aria-controls="nav-sign-in" aria-selected="false">@Localizer["Login"].Value</a>
+                    </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                    <div class="@((errorLogin == "Failed Login" || TempData.Keys.Contains("openLoginTab")) ? "tab-pane fade" : "tab-pane fade show active")"
+                         id="nav-sign-up" role="tabpanel" aria-labelledby="nav-sign-up-tab">
+                        @if (errorRegistration != "none")
+                        {
+                            foreach (var error in errors)
+                            {
+                                if (error != "" && error != "DuplicateUserName")
+                                {
+                                    <div id="registrationError">
+                                        <p style="color: red;">&bull; @Localizer[error].Value</p>
+                                    </div>
+                                }
+                            }
+                        }
+                        @{await Html.RenderPartialAsync("_Registration", new UserRegisterViewModel());}
+                    </div>
+                    <div class="@((errorLogin == "Failed Login" || TempData.Keys.Contains("openLoginTab")) ? "tab-pane fade show active" : "tab-pane fade")"
+                         id="nav-sign-in" role="tabpanel" aria-labelledby="nav-sign-in-tab">
+                        @if (errorLogin == "Failed Login")
+                        {
+                            <div id="loginError">
+                                <p style="color: red;">&bull; @Localizer["FailedLogin"].Value</p>
+                            </div>
+
+                        }
+                        @{await Html.RenderPartialAsync("_Login", new LoginViewModel());}
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                @{
+                    var providers = (await SignInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
+                    @foreach (var provider in providers)
+                    {
+                        @Html.ActionLink(
+                        "    " + provider.Name,
+                        "SignIn",
+                        "Account",
+                        routeValues: new
+                        {
+                            provider = provider.Name
+                        },
+                        htmlAttributes: new
+                        {
+                            @class = $"fa fa-{provider.Name.ToLower()}"
+                        })
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let closeButton = $('#closeAuthorizationModalWindow');
+
+    closeButton.on("click", function () {
+        let loginError = $('#loginError');
+        let registration = $('#registrationError');
+        var formLogin = $('#formLogin');
+        var formForgotPassword = $('#formForgotPassword');
+
+        formLogin.show();
+        formForgotPassword.hide();
+
+        loginError.remove();
+        registration.remove();
+
+        $('#body').removeClass("fixBodyModal");
+    })
+</script>

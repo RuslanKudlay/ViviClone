@@ -1,0 +1,53 @@
+<div id="divDataBody" class="card">
+    <div class="row formTitle">
+        <h2 class="title">{{title}}</h2>
+    </div>
+    <form name="addBrand" class="form-horizontal container-fluid" [formGroup]="myForm" *ngIf="!loading">
+        <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Location*</label>
+                    <select [(ngModel)]="selectedType" class="form-control" formControlName="type">
+                        <option *ngFor="let type of types; let i = index" class="form-control" [ngValue]="type.number">
+                            {{ type.type }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Link To Ware*</label>
+                    <select [(ngModel)]="selectedWare" class="form-control" formControlName="linkToWare">
+                        <option *ngFor="let ware of wares; let i = index" class="form-control" [ngValue]="ware">
+                            {{ ware.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Image</label>
+                    <div class="logo-box" *ngIf="slide.base64Image">
+                        <img [src]="slide.base64Image" />
+                    </div>
+                    <div class="d-flex">
+                        <input type="text" class="form-control m-b-15" formControlName="image" readonly />
+                        <div *ngIf="errorDisplayed('image')" class="invalid-feedback">
+                            <small>Image is required</small>
+                        </div>
+                        <button type="button" class="btn btn-sm" (click)="showModalImageUploader();">Load Image</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">
+                    <button type="submit" class="btn btn-success alignCenterBtn"
+                        [style.display]="(slide.id > 0) ? 'none' : 'block'" (click)="addSlide()"
+                        [disabled]="myForm.invalid">Save</button>
+                    <button class="btn btn-primary alignCenterBtn" [style.display]="(slide.id > 0) ? 'block' : 'none'"
+                        (click)="updateSlide()" [disabled]="myForm.invalid">Update</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+<div id="divDataBody" class="container entity">        
+        <form name="addCategory" class="form-horizontal container-fluid formContainer" >
+            <div class="row formTitle">
+                    <h2 class="title">{{title}}</h2>
+            </div>
+            <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Name</label>                    
+                        <input name="Name" class="form-control" type="text"  (change)="onKeyBrandName ($event.target.value)" [(ngModel)]="groupOfWare.name" />
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12" style="margin-top: 25px;">
+                        <label>IsEnable</label>                                            
+                        <input name="IsEnable" type="checkbox" [(ngModel)]="groupOfWare.isEnable" />
+                    </div>
+                </div>  
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Logo Image </label>
+                        <div class="logo-box" *ngIf="groupOfWare.base64Image">
+                            <img [src]="groupOfWare.base64Image" />
+                        </div>
+                        <button type="button" class="btn btn-sm" (click)="showModalImageUploader();">Load logo</button>                        
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12" style="margin-top: 25px;">
+                        <label>Icon:</label>                                            
+                        <i *ngIf="groupOfWare.iconString" class="{{groupOfWare.iconString}}" style="margin-right:10px"></i> 
+                        <span *ngIf="!groupOfWare.iconString">Not chosen yet</span>
+                        <button (click)="showIconModal()" class="btn btn-sm btn-primary">Show Icon</button> 
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                        <div class="form-group col-md-12 col-xs-12" style="margin-top: 25px;">
+                            <label>Parent</label>                                            
+                            <angular2-multiselect [data]="dropdownListGows" name="parent"
+                                                  [(ngModel)]="selectedParent"
+                                                  [settings]="dropdownParentSettings" >
+                                    <c-item>
+                                        <ng-template let-item="item">
+                                          <label style="color: #333;min-width: 150px;">{{item.itemName}}</label>                                          
+                                        </ng-template>
+                                    </c-item>
+                            </angular2-multiselect>  
+                        </div>
+                    </div>    
+                    <!-- <div class="col-md-12 col-xs-12">
+                        <div class="form-group col-md-12 col-xs-12" style="margin-top: 25px;">
+                            <label>Childs</label>   
+                            <angular2-multiselect [data]="dropdownListGows" name="childs"
+                                                  [(ngModel)]="selectedChilds"
+                                                  [settings]="dropdownChildSettings" >
+                                    <c-item>
+                                        <ng-template let-item="item">
+                                          <label style="color: #333;min-width: 150px;">{{item.itemName}}</label>                                          
+                                        </ng-template>
+                                    </c-item>
+                            </angular2-multiselect>      
+                        </div>
+                    </div>             -->
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">                  
+                        <button type="submit" class="btn btn-success  alignCenterBtn" [style.visibility]="(groupOfWare.id > 0) ? 'hidden' : 'visible' " (click)="addGroupOfWares()">Save</button>
+                        <button class="btn btn-primary  alignCenterBtn" [style.visibility]="(groupOfWare.id > 0) ? 'visible' : 'hidden' " (click)="updateGroupOfWares()">Update</button>
+                    </div>
+                </div>   
+            </div>
+        </form>       
+</div>

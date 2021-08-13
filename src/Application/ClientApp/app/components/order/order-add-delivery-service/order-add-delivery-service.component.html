@@ -1,0 +1,30 @@
+<div id="divDataBody" class="card">
+    <div class="row formTitle">
+        <h2 class="title">Add delivery service</h2>
+    </div>
+    <form name="addBrand" class="form-horizontal container-fluid">
+        <div class="col-md-8 col-md-offset-2 col-xs-12 " *ngIf="!loading">
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Delivery service</label>
+                    <select [(ngModel)]="order.deliveryService" class="form-control" tabindex="-1" name="DeliveryService" (change)="onSelectUpdated()">
+                        <option *ngFor="let deliveryService of deliveryServices; let i = index" class="form-control" [selected]="deliveryService.name == order.deliveryService">
+                            {{ deliveryService.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Declaration number</label>                                            
+                    <input name="DeclarationNumber" class="form-control inlineInput" type="text" [(ngModel)]="order.declarationNumber" />                   
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">                  
+                    <button class="btn btn-primary alignCenterBtn" (click)="addDeliveryService()">Add</button>
+                </div>
+            </div>    
+        </div>  
+    </form>
+</div>

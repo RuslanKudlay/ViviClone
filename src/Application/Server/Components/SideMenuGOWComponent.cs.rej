@@ -1,0 +1,14 @@
+diff a/src/Application/Server/Components/SideMenuGOWComponent.cs b/src/Application/Server/Components/SideMenuGOWComponent.cs	(rejected hunks)
+@@ -20,10 +20,10 @@ namespace Application.Server.Components
+         {
+             List<GOWModel> groupOfWare = null;
+             if (parametr == null)
+-                groupOfWare = (List<GOWModel>)_groupOfWare.GetSideMenuGOW().Result;
++                groupOfWare = (List<GOWModel>)_groupOfWare.GetTreeGOW().Result;
+             else
+                 //TODO CHILD 
+-                groupOfWare = (List<GOWModel>)_groupOfWare.GetSideMenuGOW().Result;
++                groupOfWare = (List<GOWModel>)_groupOfWare.GetTreeGOW().Result;
+ 
+             return View("Index", groupOfWare);
+         }

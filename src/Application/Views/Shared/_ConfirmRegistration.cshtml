@@ -1,0 +1,36 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Program> Localizer
+
+<div class="modal fade fixWindowModal show" id="confirmRegistrationModalWindow" data-backdrop="static" data-keyboard="false"
+     tabindex="-1" role="dialog" aria-labelledby="confirmRegistrationModalLabel" aria-modal="true" style="display: block">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["ConfirmationRegistration"].Value</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeConfirmRegistrationModalWindowModalWindow">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @Localizer["SuccessRegistrationUser"].Value                
+            </div>
+        </div>
+    </div>
+</div>
+
+@TempData.Remove("confirmRegistration");
+
+<script>
+    let closeModalButton = $('#closeConfirmRegistrationModalWindowModalWindow');
+
+    $('#body').addClass("fixBodyModal");
+
+    closeModalButton.on("click", function () {
+        $('#confirmRegistrationModalWindow').removeAttr("style");
+        $('#confirmRegistrationModalWindow').removeClass("show");
+        $('#confirmRegistrationModalWindow').removeAttr("aria-modal");
+        $('#confirmRegistrationModalWindow').attr("aria-hidden", "true");
+
+        $('#body').removeClass("fixBodyModal");
+    })
+</script>

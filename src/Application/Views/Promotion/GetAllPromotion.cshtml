@@ -1,0 +1,13 @@
+﻿@model IEnumerable<Application.EntitiesModels.Models.PromotionModel>
+
+@foreach (var item in Model)
+{
+    <div class="@(item.IsEnable?"visible":"hidden")">
+        <div class="box-caption transparent-blue mark">
+            <div class="">
+                <h2>@Html.ActionLink(item.Title, "GetPromotion", "Promotion", new { subUrl = item.SubUrl }, null)</h2>
+                <p>@Html.DisplayFor(modelItem => item.Body)</p>
+            </div>
+        </div>
+    </div>
+}

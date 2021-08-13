@@ -1,0 +1,18 @@
+﻿@model Application.EntitiesModels.Models.QueryModels.QueryWaresModel
+
+<ul class="bestseller-list">
+    @foreach (var item in Model.Result)
+    {
+            <li class="bestseller-item">
+                <a href="@Url.Action("WareDetails", "Shop", new { subUrl = item.SubUrl }, null)">
+                    <figure class="img-product">
+                        <img class="loadImage" style="cursor:pointer" src="" data-imageUrl="@item.WareImage" alt="" height="130" width="112">
+                    </figure>
+                </a>
+                <div class="bestseller-content">
+                    <a href="@Url.Action("WareDetails", "Shop", new { subUrl = item.SubUrl }, null)" class="bestseller-text">@item.Name</a>
+                    <span>@item.Price UAH</span>
+                </div>
+            </li>
+    }
+</ul>

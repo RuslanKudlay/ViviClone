@@ -1,0 +1,21 @@
+version: '3'
+services:
+  mssql:    
+      image: microsoft/mssql-server-linux:latest
+      container_name: sqlserver     
+      ports:
+        - "1431:1433" 
+      environment:
+        SA_PASSWORD: "Adminnimda123"
+        ACCEPT_EULA: "Y"      
+        MSSQL_PID: Developer
+  application:      
+    image: beautyprod
+    depends_on:
+     - mssql
+    container_name: beautydnepr   
+    environment:
+    - ASPNETCORE_ENVIRONMENT=Production
+    ports:
+     - "5101:80"
+    

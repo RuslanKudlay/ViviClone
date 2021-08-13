@@ -1,0 +1,54 @@
+﻿@using AspNetCore
+@model Application.EntitiesModels.Models.QueryModels.QueryPostModel
+@{
+
+    Layout = "_Layout";
+}
+
+<div id="blogList" class="main-content margin-from-menu">
+    <div class="container">
+        <div class="row">
+            <div class="content blog-content col-md-11 has-sidebar-left">
+                @if (Model != null && Model.Result.Any())
+                {
+                    foreach (var item in Model.Result)
+                    {
+                        if (item.IsEnable)
+                        {
+                            <div class="blog-box">
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="post-media">
+                                            <figure>
+                                                <div style="height: 237px; width: 370px">
+                                                    <a href="">
+                                                        <img class="loadImage" src=" " data-imageUrl="@item.ImageURL" alt="blog1">
+                                                    </a>
+                                                </div>
+                                            </figure>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-7">
+                                        <div class="blog-content-left">
+                                            <a href="#" onclick="getPost('@item.SubUrl')">
+                                                <h4 id="@item.SubUrl" class="blog-box-title concretePost">@item.Title</h4>
+                                            </a>
+                                            <div class="blog-box-date">
+                                                <i class="fa fa-calendar" aria-hidden="true"></i>
+                                                @item.DateModificated
+                                            </div>
+                                            <div class="blog-box-desc">
+                                                @Html.Raw(item.Body)
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

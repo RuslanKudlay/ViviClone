@@ -1,0 +1,686 @@
+﻿@model List<Application.EntitiesModels.Models.SliderModel>
+@using Application.EntitiesModels.Entities
+
+<div class="main-content">
+    <div class="banner banner-home banner-home3">
+        <div class="container">
+            <div class="supermartket-owl-carousel banner-slide" data-autoplaytimeout="3000" data-loop="yes" data-autoplay="yes" data-number="1" data-margin="0" data-navcontrol="yes" data-dots="yes">
+                @for (int i = 0; i < Model.Count; i++)
+                {
+                    if (Model[i].Type == TypeSlider.Shop)
+                    {
+                        <div class="banner-home3-content slide-h3">
+                            <figure>
+                                <a href="@Model[i].LinkToWare" target="_blank">
+                                    <img src="@Model[i].Base64Image" alt="banner home3" width="1170" height="495">
+                                </a>
+                            </figure>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<!--end banner-->
+<section id="section15">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 col-sm-6">
+                <div class="icon-box style2">
+                    <div class="icon-box-left"><i class="flaticon-transport"></i></div>
+                    <div class="icon-box-right">
+                        <h4><a href="#" data-color="#3374a6"><span>Free</span> Fast Delivery</a></h4>
+                        <p>On hundreds of Digital appliances<br />Excludes Sunday delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3  col-sm-6">
+                <div class="icon-box style2">
+                    <div class="icon-box-left"><i class="flaticon-shield"></i></div>
+                    <div class="icon-box-right">
+                        <h4><a href="#" data-color="#3374a6"><span>Buyer</span> Protection</a></h4>
+                        <p>On hundreds of Digital appliances<br />Excludes Sunday delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3  col-sm-6">
+                <div class="icon-box style2">
+                    <div class="icon-box-left"><i class="flaticon-dollar-symbol"></i></div>
+                    <div class="icon-box-right">
+                        <h4><a href="#" data-color="#3374a6"><span>Return</span> & Exchange</a></h4>
+                        <p>On hundreds of Digital appliances<br />Excludes Sunday delivery</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3  col-sm-6">
+                <div class="icon-box style2">
+                    <div class="icon-box-left"><i class="flaticon-24-hours-support"></i></div>
+                    <div class="icon-box-right">
+                        <h4><a href="#"><span>Support</span> 24/7</a></h4>
+                        <p>On hundreds of Digital appliances<br />Excludes Sunday delivery</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!--end icon box h3-->
+<section id="section16">
+    <div class="container">
+        <div class="tab-logo-brand">
+            <ul class="nav nav-pills">
+                <li class="active">
+                    <a href="#1a" data-toggle="tab"><img src="~/assets/images/tab1.png" alt="tab" width="235" height="70"></a>
+                </li>
+                <li>
+                    <a href="#2a" data-toggle="tab"><img src="~/assets/images/tab2.png" alt="tab" width="235" height="70"></a>
+                </li>
+                <li>
+                    <a href="#3a" data-toggle="tab"><img src="~/assets/images/tab3.png" alt="tab" width="235" height="70"></a>
+                </li>
+                <li>
+                    <a href="#4a" data-toggle="tab"><img src="~/assets/images/tab4.png" alt="tab" width="235" height="70"></a>
+                </li>
+                <li>
+                    <a href="#5a" data-toggle="tab"><img src="~/assets/images/tab5.png" alt="tab" width="235" height="70"></a>
+                </li>
+            </ul>
+            <div class="product-tabs-content tab-content clearfix equal-container">
+                <div class="tab-pane active" id="1a">
+                    <div class="supermartket-owl-carousel" data-navcontrol="yes" data-number="5">
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-5.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG Logitech Pro Camera</a>
+                                <p class="product-content-desc">
+                                    PTZ HD 1080p Profession<br />
+                                    Compatible USB
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-4.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG BBL605XL</a>
+                                <p class="product-content-desc">Mixer, 800 watt, 6.5-Quarts </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-2.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Nokia EDV5051</a>
+                                <p class="product-content-desc">
+                                    Automatic Washing Machine<br />
+                                    provides
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-3.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Panasonic Z931</a>
+                                <p class="product-content-desc">
+                                    Panasonic Vacuum Cleaners<br />
+                                    Currently Available
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="2a">
+                    <div class="supermartket-owl-carousel" data-navcontrol="yes" data-number="5">
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-4.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG BBL605XL</a>
+                                <p class="product-content-desc">Mixer, 800 watt, 6.5-Quarts </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-2.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Nokia EDV5051</a>
+                                <p class="product-content-desc">
+                                    Automatic Washing Machine<br />
+                                    provides
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-5.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG Logitech Pro Camera</a>
+                                <p class="product-content-desc">
+                                    PTZ HD 1080p Profession<br />
+                                    Compatible USB
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-3.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Panasonic Z931</a>
+                                <p class="product-content-desc">
+                                    Panasonic Vacuum Cleaners<br />
+                                    Currently Available
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="3a">
+                    <div class="supermartket-owl-carousel" data-navcontrol="yes" data-number="5">
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-2.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Nokia EDV5051</a>
+                                <p class="product-content-desc">
+                                    Automatic Washing Machine<br />
+                                    provides
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-5.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG Logitech Pro Camera</a>
+                                <p class="product-content-desc">
+                                    PTZ HD 1080p Profession<br />
+                                    Compatible USB
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-4.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG BBL605XL</a>
+                                <p class="product-content-desc">Mixer, 800 watt, 6.5-Quarts </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-3.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Panasonic Z931</a>
+                                <p class="product-content-desc">
+                                    Panasonic Vacuum Cleaners<br />
+                                    Currently Available
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="4a">
+                    <div class="supermartket-owl-carousel" data-navcontrol="yes" data-number="5">
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-4.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG BBL605XL</a>
+                                <p class="product-content-desc">Mixer, 800 watt, 6.5-Quarts </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-3.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Panasonic Z931</a>
+                                <p class="product-content-desc">
+                                    Panasonic Vacuum Cleaners<br />
+                                    Currently Available
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-2.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Nokia EDV5051</a>
+                                <p class="product-content-desc">
+                                    Automatic Washing Machine<br />
+                                    provides
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-5.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG Logitech Pro Camera</a>
+                                <p class="product-content-desc">
+                                    PTZ HD 1080p Profession<br />
+                                    Compatible USB
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane" id="5a">
+                    <div class="supermartket-owl-carousel" data-navcontrol="yes" data-number="5">
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-2.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Nokia EDV5051</a>
+                                <p class="product-content-desc">
+                                    Automatic Washing Machine<br />
+                                    provides
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-1.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">4GB Smartphone</a>
+                                <p class="product-content-desc">BLU Studio 5.5 D610A 4GB </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-5.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG Logitech Pro Camera</a>
+                                <p class="product-content-desc">
+                                    PTZ HD 1080p Profession<br />
+                                    Compatible USB
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-4.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">LG BBL605XL</a>
+                                <p class="product-content-desc">Mixer, 800 watt, 6.5-Quarts </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                        <div class="product-content equal-elem">
+                            <figure><a href="#"><img src="~/assets/images/tab-c-3.jpg" alt="tab-c" width="195" height="230"></a></figure>
+                            <div class="product-info">
+                                <a href="#" class="product-title-content">Panasonic Z931</a>
+                                <p class="product-content-desc">
+                                    Panasonic Vacuum Cleaners<br />
+                                    Currently Available
+                                </p>
+                            </div>
+                            <div class="tab-h3-right">
+                                <a href="#" class="product-title-content">Samsung Galaxy S7 edge </a>
+                                <p>
+                                    12.5 print imager<br />
+                                    Resolution of 12 million colors<br />
+                                    Camera Full Hd 5.1”<br />
+                                    Hardware Core i7<br />
+                                    Titanium Shell Black<br />
+                                    Made by: Korea
+                                </p>
+                                <p class="tab-h3-cost">$160.00 </p>
+                                <a href="#" class="button blue">Shop Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--end tab-home3-logo-->
+    </div>
+</section>
+
+        </div>
+
+
+<script type='text/javascript'>
+    var PTSettings = { "loop": "1", "f_effect": "15", "b_effect": "16", "autoslide": "yes", "autoslideduration": "5000" };
+</script>

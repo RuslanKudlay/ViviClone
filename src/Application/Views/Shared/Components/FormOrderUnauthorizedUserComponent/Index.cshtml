@@ -1,0 +1,53 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.RegistrationModels.RegisterViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Program> Localizer
+
+<div class="modal fixWindowModal" id="modalFormOrder" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">@Localizer["FormOrder"].Value</h2>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeTemporatyRegisterModalWindow">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBodyUnauthorizedUser">
+                <form asp-antiforgery="true" method="post" class="m-t-10">
+                    <div class="form-group d-flex flex-column">
+                        <label asp-for="SecondName"></label>
+                        <input class="input-text" asp-for="SecondName" autocomplete="off" id="secondNameNewCutomer" />
+                        <span asp-validation-for="SecondName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label asp-for="FirstName"></label>
+                        <input class="input-text" asp-for="FirstName" autocomplete="off" id="firstNameNewCutomer" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label asp-for="Phone"></label>
+                        <input type="tel" class="input-text" asp-for="Phone" placeholder="+38(0__) ___-__-__" autocomplete="off" id="phoneNewCutomer" />
+                        <span asp-validation-for="Phone" class="text-danger"></span>
+                    </div>
+                    <div class="form-group d-flex flex-column">
+                        <label asp-for="Email"></label>
+                        <input type="email" class="input-text" asp-for="Email" placeholder="you@gmail.com" autocomplete="off" id="emailNewCutomer" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group m-b-0">
+                        <button class="btn btn-primary createOrder" name="register" type="submit">@Localizer["ConfirmOrder"].Value</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    jQuery(function ($) {
+        $("#registrationPhone").mask("+38(099) 999-99-99");
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

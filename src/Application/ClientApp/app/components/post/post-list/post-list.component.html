@@ -1,0 +1,54 @@
+<div class="card">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>{{ 'Posts' | translate }}</h2>
+        </div>
+        <div class="col-md-6 text-right">
+            <h2></h2><a class="btn btn-primary" routerLink="/posts/newPost">Add New</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12" id="agGrid">
+            <app-ag-grid-helper [columnDefs]="createColumnDefs()"
+                                [service]="blogService"
+                                [queryModel]="queryModel">
+            </app-ag-grid-helper>
+        </div>
+    </div>
+    <!--<div class="row" *ngIf="posts.result">
+        <div class="col-md-12">
+            <table class="table table-hover">
+                <thead class="text-primary">
+                    <tr>
+                        <th>Id</th>
+                        <th>Title</th>
+                        <th>Is Enable</th>
+                        <th>Date</th>
+                        <th>Last Update Date</th>
+                        <th>Info</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let post of posts.result; let i = index">
+                        <td><span class="badge">{{post.id}}</span></td>
+                        <td>{{post.title }}</td>
+                        <td>
+                            <span *ngIf="post.isEnable" class="text-danger glyphicon glyphicon-ok"></span>
+                            <span *ngIf="!post.isEnable" class="glyphicon glyphicon-remove"></span>
+                        </td>
+                        <td>{{post.date}}</td>
+                        <td>{{post.lastUpdateDate}}</td>
+                        <td>
+                            <a class="btn btn-xs btn-primary" routerLink="/posts/{{post.subUrl}}">
+                                Edit
+                            </a>
+                            <a class="btn btn-xs btn-danger" (click)="delete(post.id, i)">
+                                Del
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>-->
+</div>

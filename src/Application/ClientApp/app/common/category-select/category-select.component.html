@@ -1,0 +1,49 @@
+
+<div class="col-md-12 formContainer" *ngIf="isSelectedCategoryValues">    
+    <div class="row formTitle"  style="margin-top:10px;">
+        <h2 class="title">Selected Category Values</h2>
+    </div>       
+    <div *ngFor="let category of categories">
+        <ng-container *ngFor="let selectedCategoryValue of category.selectedCategoryValues">
+            <div class="col-md-3 selectedCategoryValueContainer" *ngIf="category.selectedCategoryValues">
+                    <span class="categoryValuesName">{{selectedCategoryValue.name}}</span>
+                    <span class="glyphicon glyphicon-remove"
+                        (click)="removeCategoryValues(category.category.id, selectedCategoryValue.id)"></span>
+            </div>    
+        </ng-container>
+    </div>
+</div>
+
+<div class="col-md-12 formContainer">    
+    <div class="row formTitle" >
+        <h2 class="title">Category Values</h2>
+    </div>   
+    <div class="col-md-12">
+        <div class="col-md-12 categoryValuesContainer" >  
+            <div class="col-md-12">
+                <input  id="searchInp" [(ngModel)]="searchText"  type="text" name="search"  placeholder="Search..">
+            </div> 
+            <div class="col-md-6">
+                <ul>
+                    <li  *ngFor="let category of categoriesLeft | filterCategory : searchText" class="pure-checkbox"
+                        (click)="showCategoryValuesSelectModal(category)">           
+                        <label *ngIf="category && category.category">{{category.category.name}}
+                            <span *ngIf="category.selectedCategoryValues && category.selectedCategoryValues.length > 0">({{getCategoryValuesTitle(category.selectedCategoryValues)}})</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>    
+            <div class="col-md-6">
+                <ul>
+                    <li  *ngFor="let category of categoriesRight | filterCategory : searchText" class="pure-checkbox"
+                        (click)="showCategoryValuesSelectModal(category)">
+                        <label *ngIf="category && category.category">{{category.category.name}}
+                            <span
+                                *ngIf="category.selectedCategoryValues && category.selectedCategoryValues.length > 0">({{getCategoryValuesTitle(category.selectedCategoryValues)}})</span>
+                        </label>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

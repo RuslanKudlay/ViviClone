@@ -1,0 +1,60 @@
+﻿@model IEnumerable<Application.EntitiesModels.Models.OrderModels.OrderModel>
+
+@{
+    Layout = "_ShopLayout";
+
+}
+<div class="class="shoping-cart">
+    <div class="main-content container">
+        <div class="shop-table-content container">
+            <div class="shoping-form">
+                <div class="div-table-cart">
+                    <table class="shop_table cart">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-thumbnail">&nbsp;</th>
+                                <th class="product-name">Название товара</th>
+                                <th class="product-price">Цена</th>
+                                <th class="product-quantity">Кол-во</th>
+                                <th class="product-subtotal">Оплачено</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var order in Model)
+                            {
+                                <tr class="cart_item">
+                                    <td class="product-thumbnail" data-title="">
+                                        <span>@order.OrderNumber</span>
+                                    </td>
+                                    <td class="product-thumbnail" data-title="">
+                                        <a href=""><img height="150" width="185" alt="s_c" class="attachment-shop_thumbnail wp-post-image" src="assets/images/s_c.jpg"></a>
+                                    </td>
+                                    <td class="product-name" data-title="Product Name">
+                                        <a href="#">Fukasawa's Twelve watch</a>
+                                    </td>
+                                    <td class="edit"><a href="#">Edit</a></td>
+                                    <td class="product-price" data-title="Unit Price">
+                                        <span class="amount">$168.00</span>
+                                    </td>
+                                    <td class="product-quantity" data-title="Qty">
+                                        <div class="quantity buttons_added">
+                                            <input type="text" class="input-text qty text" title="Qty" value="1" name="qty">
+                                        </div>
+                                    </td>
+                                    <td class="product-subtotal" data-title="Subtotal">
+                                        <span class="amount">$168.00</span>
+                                    </td>
+                                    <td class="product-remove" data-title="Remove">
+                                        <a title="Remove this item" class="remove" href="#">×</a>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

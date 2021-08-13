@@ -1,0 +1,24 @@
+<div class="modal-dialog" >
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" (click)="close()">&times;</button>
+            <h4 class="modal-title">Выберите иконку</h4>
+        </div>
+        <div class="modal-body col-md-12"> 
+            <div *ngIf="isError" class="col-md-12">
+                <span style="color:red"> Выберити иконку</span>
+            </div>
+            <div (click)="changeIcon(item)" *ngFor="let item of listOfIconNames;let index;"  style="padding:15px;font-size: 30px;" class="col-md-4">
+                <i class="{{item}}"></i>               
+            </div>
+            <div *ngIf="chosenIcon" class="col-md-12" style="margin-top:15px;">
+                <span>Выбраная иконка :  <i class="{{chosenIcon}}"></i> </span>
+            </div>
+        </div>
+        
+        <div  class="modal-footer">              
+            <button  type="button" class="btn btn-success" (click)="confirm()">Сохранить</button>
+            <button type="button" class="btn btn-danger" (click)="close()">Отмена</button>
+        </div>
+    </div>
+</div>

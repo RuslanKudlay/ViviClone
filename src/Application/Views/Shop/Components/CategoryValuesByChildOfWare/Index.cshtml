@@ -1,0 +1,16 @@
+﻿@model IEnumerable<Application.EntitiesModels.Models.ViewsModel.WareCategoryValuesModel>
+
+<div class="col-md-12 category-values-by-child">
+    @foreach(var category in Model)
+    {
+        <div class="col-md-3 category-container">            
+            <h4>@category.Category.Name</h4>
+            <ul>
+                @foreach(var categoryValues in category.CategoryValues.Take(5))
+                {
+                    <li>@categoryValues.CategoryValue.Name<span class="next-icon">></span></li>
+                }
+            </ul>
+        </div>
+    }
+</div>

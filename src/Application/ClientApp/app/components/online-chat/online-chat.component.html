@@ -1,0 +1,57 @@
+﻿<div id="divDataBody" class="card" style="padding-bottom : 0">
+    <div class="row">
+        <div class="col-md-6">
+            <h2>Чат Онлайн</h2>
+        </div>
+        <div class="col-md-12">
+            <mat-tab-group *ngIf="chatsOnline.length > 0">
+                <mat-tab *ngFor="let item of chatsOnline; let i = index" class="tabsPanel">
+                    <ng-template mat-tab-label>
+                        <div class="btn-group chat-pills">
+                            <button class="btn btn-outline">Чат с id {{item.sessionOrUserId}}</button>
+                            <button class="btn btn-danger" (click)="closeChat(item.id)">X</button>
+                        </div>
+                    </ng-template>
+
+                    <div id={{item.id}} #chatBody class="chat-body barbershop-pole"
+                         style="position: absolute; left: 0px; top: 0px; height: 100%; right: 0px; margin: 0px auto; opacity: 0.5"
+                         *ngIf="item.shouldBeClosed">
+                    </div>
+
+                    <div class="text-center" style="margin-top : 20%; margin-left:45%; position: absolute" *ngIf="item.shouldBeClosed">
+                        <p>Чат больше не активен</p>
+                        <button class="btn btn-primary" (click)="closeChat(item.id)">Закрыть вкладку</button>
+                    </div>
+
+                    <div id={{item.id}} #chatBody class="chat-body">
+                        <div *ngFor="let messageData of item.chatMessages; let i = index">
+                            <div [ngClass]="messageData.isMessageFromOperator ? 'supportMessage' : 'userMessage' "
+                                 [innerHTML]="messageData.message">
+                            </div>
+                            <i [ngClass]="messageData.isMessageFromOperator ? 'supportMessageTime' : 'userMessageTime' ">
+                                {{messageData.createdDate | date:"dd/MM/yy H:mm"}}
+                            </i>
+                        </div>
+
+                    </div>
+
+                    <textarea class="msgField" [ngModel]="supportMessage" #supportMsg [disabled]="item.shouldBeClosed" (keypress)="keyDownHandler($event, item.id)" (keyup)="keyUpHandler($event)"></textarea>
+
+                    <button class="send" [disabled]="!supportMsg.value" (click)="sendMessage(supportMsg.value, item.id);">
+                        <i class="fa fa-paper-plane-o fa-3x"></i>
+                    </button>
+                </mat-tab>
+            </mat-tab-group>
+
+            <mat-tab-group *ngIf="chatsOnline.length == 0">
+                <mat-tab>
+                    <ng-template mat-tab-label>
+                        В данный момент нет онлайн чатов
+                    </ng-template>
+                    <div #chatBody class="chat-body barbershop-pole">
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
+    </div>
+</div>

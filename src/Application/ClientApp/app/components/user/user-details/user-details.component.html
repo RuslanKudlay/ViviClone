@@ -1,0 +1,41 @@
+<div id="divDataBody" class="card">
+    <div class="row formTitle">
+        <h2 class="title">User details {{ user.name }}</h2>
+    </div>
+    <form name="addBrand" class="form-horizontal container-fluid" *ngIf="!loading">
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <div class="form-group col-md-12">
+                    <label>Change role</label>
+                    <select [(ngModel)]="selectedRole" class="form-control" name="select-role">
+                        <option *ngFor="let role of roles; let i = index" class="form-control" [ngValue]="role">
+                            {{ role.name }}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group col-md-12">                  
+                    <button class="btn btn-primary alignCenterBtn" (click)="changeRole()">Change</button>
+                </div>
+            </div>    
+        </div>  
+        <div class="col-md-6">
+            <div class="col-md-12">
+                <div class="form-group col-md-12">
+                    <label>Change status</label>
+                    <select [(ngModel)]="selectedStatus" class="form-control" name="select-status">
+                        <option class="form-control" [value]="UserStatus.Active">Active</option>
+                        <option class="form-control" [value]="UserStatus.Disabled">Disabled</option>
+                        <option class="form-control" [value]="UserStatus.Blocked">Blocked</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group col-md-12">                  
+                    <button class="btn btn-primary alignCenterBtn" (click)="changeStatus()">Change</button>
+                </div>
+            </div>    
+        </div>  
+    </form>
+</div>

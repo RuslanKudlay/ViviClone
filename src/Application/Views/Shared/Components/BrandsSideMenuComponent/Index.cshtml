@@ -1,0 +1,25 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.SideSearchMenuModel
+
+@if (Model.Brands != null)
+{
+    <div class="categories-sidebar">
+        <div class="sidebar-title-section">Бренды</div>
+        <div class="categories-checkbox filter-params">
+            <ul class="categories-list-wrap">
+                @foreach (var item in Model.Brands)
+                {
+                    <li class="@(item.IsDisabled == true ? "disabled-button" : "")">
+                        <div class="checkbox_filter_brand @(item.IsSelected ? "filter_checked" : "")" data-search-key="brands" data-search-value="@(item.Brand.SubUrl)" id="@("checkbox_" + item.Brand.Name)"></div>
+                        <span class="checkbox_filter_title_brand" data-search-key="brands" data-search-value="@(item.Brand.SubUrl)">@item.Brand.Name</span>
+                        @if (item.IsDisabled == false)
+                        {
+                            <span class="countOfWare">(@item.Count)</span>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+    </div>
+}
+
+

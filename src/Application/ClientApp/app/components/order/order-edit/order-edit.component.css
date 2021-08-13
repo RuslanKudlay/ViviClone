@@ -1,0 +1,65 @@
+.selectBTN {
+    width: 100%;
+    height: 40px;
+    background: none;
+    padding: 0;
+    color: #0079AE;
+    background-color: transparent;
+    background-image: none;
+    border-color: #0079FE;
+    font-size: 16px;
+    margin: 10px;
+}
+.selectBTN:hover {
+    background: #0079FE;
+    color:#fff;
+}
+.alignCenterBtn{
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+}
+
+.nav-tabs {
+    background-color: gainsboro;
+    bottom: -15px;
+    position: relative;
+}
+
+.nav {
+    padding: 0 0 0 0;
+}
+
+.li-nav {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    /*border-bottom-width: 0px !important;*/
+}
+
+    .li-nav.active {
+        background-color: white !important;
+    }
+
+li > a {
+    color: black !important;
+}
+
+.newGOWIcon {
+    cursor:pointer;
+}
+
+.fa-plus-circle {
+    color: green;
+}
+
+nav > ul > li {
+    display: inline-block !important;
+    line-height: 44px !important;
+    padding: 0 14px !important;
+    float: left;
+}
+
+.checkb {
+    margin-right: 4px;
+}

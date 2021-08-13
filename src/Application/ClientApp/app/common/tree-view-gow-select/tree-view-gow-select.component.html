@@ -1,0 +1,17 @@
+<ul class="treenodes">
+    <li *ngFor="let node of groupOfWares; let i = index;" class="treenode">       
+        <div class="nodeInfoContainer"> 
+            <div class="nodeInfo" (click)="clickOnGow(node.id)">
+                <input type="checkbox" [checked]="isSelectedGow(node.id)"/>
+                <span style="font-size: 13px;">
+                    {{node.name}}
+                </span>            
+            </div>            
+            <tree-view-gow-select *ngIf="node.childs"
+                [allGroupOfWares]="allGroupOfWares"
+                [groupOfWares]="node.childs"
+                [(selectedGroupOfWares)]="selectedGroupOfWares">
+            </tree-view-gow-select>          
+        </div>
+    </li>
+</ul>

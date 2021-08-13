@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Application.EntitiesModels.Models.CategoryValuesModel>
+
+
+<h2>Технические характеристики </h2>
+
+
+<table class="table">
+
+    <tbody>
+        @foreach (var item in Model) {
+            <tr class="@(item.IsEnable?"visible":"hidden")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.CategoryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.IsEnable)
+                </td>*@
+            </tr>
+}
+    </tbody>
+</table>
+

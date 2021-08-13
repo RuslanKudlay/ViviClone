@@ -1,0 +1,235 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns='http://www.w3.org/1999/xhtml'>
+<head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>BeautyDnepr</title>
+    @RenderSection("metatags", false)
+    <link rel="shortcut icon" href="~/img/favicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="~/assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/fixModalTroubles.css" />
+    <link rel="stylesheet" href="~/css/magnific-popup.css" />
+    <link rel="stylesheet" href="~/css/admin-style.css" />
+    <link rel="stylesheet" href="~/css/shop.css" />
+    <link rel='stylesheet' href='~/assets/css/owl.carousel.min.css'>
+    <link rel='stylesheet' href='~/assets/css/animated.css'>
+    <link rel='stylesheet' href='~/assets/css/font-awesome.css'>
+    <link rel='stylesheet' href='~/assets/css/ui.css'>
+    <link rel='stylesheet' href='~/assets/css/jquery.mmenu.all.css'>
+    <link rel='stylesheet' href='~/assets/css/flaticon.css'>
+    <link rel='stylesheet' href='~/assets/css/style.css'>
+    <link rel="stylesheet" href="~/css/chat.css" />
+    <link rel="stylesheet" href="~/assets/css/jquery-ui.min.css" />
+    <link href="~/css/socialIcons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/assets/js/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i;Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+    <script type='text/javascript' src='~/assets/js/jquery.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.appear.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.countTo.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.bxslider.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.mmenu.all.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.elevateZoom.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/chosen.jquery.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/jquery.countdown.js'></script>
+    <script type='text/javascript' src='~/scripts/jquery-ui.min.js'></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    @if (ViewBag.Description != null)
+    {
+        <meta name='description' content='@ViewBag.Description' />
+    }
+    @if (ViewBag.Keywords != null)
+    {
+        <meta name='keywords' content='@ViewBag.Keywords' />
+    }
+
+    @using Microsoft.AspNetCore.Identity
+    @using Application.EntitiesModels.Models
+    @using Application.EntitiesModels.Entities
+    @using Application.EntitiesModels.Models.ViewsModel.RegistrationModels
+    @using Microsoft.AspNetCore.Identity
+    @inject SignInManager<ApplicationUser> _signInManager
+    @inject UserManager<ApplicationUser> _userManager
+</head>
+<body id="body" class="home home3">
+    @{
+        var actionName = ViewContext.RouteData.Values["action"].ToString();
+        var controllerName = ViewContext.RouteData.Values["controller"].ToString();
+    }
+
+    <header class="header @(controllerName == "Shop" && actionName == "Index" ? "header-style3" : "header-style2" )">
+        <div class="header-bottom p-b-100">
+            <div class="container">
+                <div class="header-bottom-left">
+                    <div class="header-search search-container">
+                        <form class="form form-search-header">
+                            <input type="text" id="searchElement" placeholder="Поиск...">
+                            <button class="button-search disabled-button" id="buttonSearch"><i class="flaticon-search"></i></button>
+                            <div class="search-result-container-below-input">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="header-bottom-right">
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        <div class="signIn">
+                            <a data-toggle="modal-authorization" data-target="#authorization" data-url="@Url.Action("Authorization", "Account")">
+                                Войти в аккаунт
+                            </a>
+                        </div>
+
+                        @if (TempData.Keys.Contains("resetPassword"))
+                        {
+                            @await Component.InvokeAsync("ResetPasswordComponent", TempData["resetPassword"])
+                        }
+                        else if (TempData.Keys.Contains("confirmRegistration"))
+                        {
+                            await Html.RenderPartialAsync("_ConfirmRegistration");
+                        }
+
+                        @await Component.InvokeAsync("AuthorizationComponent")
+                    }
+                    else
+                    {
+                        <div class="header-bottom-right-content my-supermarket">
+                            <div class="supermarket">
+                                @{var currentUser = await _userManager.GetUserAsync(Context.User);}
+                                <div><a class="link-top" href="#"><span class="text-bold">Здраствуйте, @currentUser.FirstName @currentUser.LastName </span><i class="fa fa-caret-down" style="font-size:12px;" aria-hidden="true"></i></a></div>
+                            </div>
+                            <div class="hover-supermarket">
+                                <ul class="market-list">
+                                    <li class="market-list-item"><a href="@Url.Action("Details","Account")">Мои данные</a></li>
+                                    <li class="market-list-item"><a href="@Url.Action("OrderHistoryDetails","Account")">Мои заказы</a></li>
+                                    <li class="market-list-item"><a href="#">Мои желания</a></li>
+                                    <li class="market-list-item"><a href="#">Мои купоны</a></li>
+                                </ul>
+                                <form method="post" asp-controller="Account" asp-action="LogOff" id="LogOutForm">
+                                    @Html.AntiForgeryToken()
+                                </form>
+                                <a href="javascript:{}" onclick="document.getElementById('LogOutForm').submit();">Выйти</a>
+                            </div>
+                        </div>
+                    }
+                    <div class="header-bottom-right-content">
+                        <a href="@Url.Action("WishListUser", "Account")" class="link-top">
+                            <i class="flaticon-like"></i>
+                            <span class="text-bold">Список желаний</span>
+                        </a>
+                    </div>
+                    @await Component.InvokeAsync("BasketComponent")
+                </div>
+            </div>
+        </div>
+        <div id="black-background"></div>
+    </header>
+    @RenderBody()
+
+    <footer></footer>
+
+    @await Component.InvokeAsync("ModalBoostrapComponent")
+    @await Component.InvokeAsync("ChatComponent")
+    @await Component.InvokeAsync("FormOrderUnauthorizedUserComponent")
+    <script src="~/scripts/maskinput.js"></script>
+    <script>
+        var ShopUrlSettings = {
+            WareByCategoryValues: '@Url.Action("GetWaresBySearchParams", "Shop")',
+            UpdateSideSearchMenu: '@Url.Action("UpdateSideSearchMenu", "Shop")',
+            UpdateBrandsSideMenu: '@Url.Action("UpdateBrandsSideMenu", "Shop")',
+            UpdateWaresComponent: '@Url.Action("UpdateWaresComponent", "Shop")',
+
+            SearchSuggestions: '@Url.Action("Search", "Search")',
+            DisplaySearchResultURL: '@Url.Action("DisplaySearchResult", "Shop")',
+            WareDetails: '@Url.Action("WareDetails", "Shop")',
+
+            NewOrder: '@Url.Action("CreateOrder", "Shop")',
+            OrderHistory: '@Url.Action("OrderHistory","Shop")',
+            CreateChat: '@Url.Action("CreateChat", "Shop")',
+            GetChatByChatGuid: '@Url.Action("GetChatByChatGuid", "Shop")',
+
+            AddWareToBasketURL: '@Url.Action("AddWareToBasket", "Shop")',
+            RemoveItemFromBasketURL: '@Url.Action("RemoveItemFromBasket", "Shop")',
+            SetCountWareInBasket: '@Url.Action("SetCountWareInBasket", "Shop")',
+            GetBasketURL: '@Url.Action("GetBasket", "Shop")',
+            GetModalBasketURL: '@Url.Action("GetModalBasket", "Shop")',
+            UpdateBasketUrl: '@Url.Action("UpdateBasket", "Shop")',
+            ClearBasketUrl: '@Url.Action("ClearBasket", "Shop")'
+        }
+
+        $(document).ready(function () {
+
+            @if (TempData.Keys.Contains("errorLogin") || TempData.Keys.Contains("errorRegistration") && !TempData.Keys.Contains("resetPassword")) {
+                <text>
+                $("#authorization").modal('show');
+                $('#body').addClass("fixBodyModal");
+                </text>
+             }
+             else {
+                <text>
+                $("#authorization").modal('hide');
+                </text>
+             }
+
+            @if (TempData.Keys.Contains("openLoginTab")) {
+                <text>
+                $("#authorization").modal('show');
+                $('#body').addClass("fixBodyModal");
+                </text>
+                TempData.Remove("openLoginTab");
+            }
+            else {
+                <text>
+                $("#authorization").modal('hide');
+                </text>
+            }
+        })
+
+        $(function () {
+            $('a[data-toggle="modal-authorization"]').click(function (event) {
+                $('#authorization').modal('show');
+                $('#body').addClass("fixBodyModal");
+            })
+        })
+    </script>
+
+
+    <script type='text/javascript' src='~/assets/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/wow.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/owl.carousel.min.js'></script>
+    <script type='text/javascript' src='~/assets/js/ui.js'></script>
+    <script type='text/javascript' src='~/assets/js/frontend.js'></script>
+    <script src="~/assets/js/moment.js"></script>
+    <script src="~/scripts/imageLoader.js"></script>
+
+    @* Management brands, categories, search etc. *@
+    <script src="~/scripts/shop/variables.js"></script>
+    <script src="~/scripts/shop/taking.js"></script>
+    <script src="~/scripts/shop/sorting.js"></script>
+    <script src="~/scripts/shop/pagination.js"></script>
+    <script src="~/scripts/shop/price.js"></script>
+    <script src="~/scripts/shop/search.js"></script>
+    <script src="~/scripts/shop/brand.js"></script>
+    <script src="~/scripts/shop/categories.js"></script>
+    <script src="~/scripts/shop/management.js"></script>
+    <script src="~/scripts/shop/professional.js"></script>
+
+    <script src="~/scripts/ware/setRatingStars.js"></script>
+    <script src="~/scripts/basket/basket.js"></script>
+    <script src="~/scripts/basket/removeItemFromBasket.js"></script>
+    <script src="~/scripts/basket/amountWareInBasket.js"></script>
+    <script src="~/scripts/basket/createOrder.js"></script>
+    <script src="~/scripts/cabinet/enterCabinet.js"></script>
+    <script src="https://connect.facebook.net/en_US/sdk.js"></script>
+    <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+    <script src="~/scripts/blog/get-post.js"></script>
+    <script src="~/scripts/blog/get-paged-post.js"></script>
+    <script src="~/scripts/chatFunctionality/chatCoockieManagement.js"></script>
+    <script src="~/scripts/chatFunctionality/chatMessageManagement.js"></script>
+    <script src="~/scripts/chatFunctionality/chatMainManagement.js"></script>
+    <script src='~/assets/js/fancybox/source/jquery.fancybox.js'></script>
+</body>
+</html>

@@ -1,0 +1,81 @@
+﻿<div class="sidebar-wrapper">
+    <ul class="nav">
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/home']">
+                <i class="material-icons">dashboard</i>
+                <p style="font-size:16px;">{{ 'Dashboard' | translate }} </p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/brands']">
+                <img src="assets/images/BrandsIcon.png" />
+                <p>{{ 'Brands' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/promotions']">
+                <img src="assets/images/PromotionsIcon.png" />
+                <p>{{ 'Promotions' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/announcements']">
+                <img src="assets/images/AnnouncementsIcon.png" />
+                <p>{{ 'Announcements' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/posts']">
+                <img src="assets/images/BlogIcon.png" />
+                <p>{{ 'Blog' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/categories']">
+                <img src="assets/images/CategoryIcon.png" />
+                <p>{{ 'Category' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/wares']">
+                <img src="assets/images/WaresIcon.png" />
+                <p>{{ 'Wares' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/group-of-wares']">
+                <img src="assets/images/GroupOfWares.png" />
+                <p>{{ 'GroupOfWares' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/orders']">
+                <img src="assets/images/GroupOfWares.png" />
+                <p>{{ 'Orders' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/chat']">
+                <i class="fa fa-commenting-o" style="margin-right: 5px;"></i>
+                <p>
+                    {{'ChatRooms' | translate}}
+                    <i blink="red" class="fa fa-envelope" *ngIf="chatsOnline.length > 0 && !chatService.isChatPageActive">
+                        <sup><small>{{chatsOnline.length}}</small></sup>
+                    </i>
+                </p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']" *permission="['SuperAdmin', 'Admin']">
+            <a [routerLink]="['/users']">
+                <img src="assets/images/GroupOfWares.png" />
+                <p>{{ 'Users' | translate }}</p>
+            </a>
+        </li>
+        <li [routerLinkActive]="['link-active']">
+            <a [routerLink]="['/sliders']">
+                <img src="assets/images/Slider.png" />
+                <p>{{ 'Sliders' | translate }}</p>
+            </a>
+        </li>
+    </ul>
+</div>

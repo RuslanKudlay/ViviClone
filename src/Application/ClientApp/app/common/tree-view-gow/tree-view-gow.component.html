@@ -1,0 +1,17 @@
+<ul *ngFor="let node of gows; let i = index;" class="treenodes">
+    <li class="treenode">
+        <div class="nodeInfoContainer">
+            <div class="nodeInfo" (dblclick)="editGroupOfWares(node)">
+                {{node.name}}
+                <span class="pull-right trashIcon" (click)="deleteNode(i)">
+                    <i class="fas fa-trash-alt"></i>
+                </span>
+                <span *ngIf="isThirdNode(node)" class="pull-right" (click)="addNewNode(i, node.id)">
+                    <i class="fas fa-plus-circle"></i>
+                </span>
+            </div>
+            <tree-view-gow *ngIf="node.childs.length > 0" [gows]="node.childs" [allGows]="allGows">
+            </tree-view-gow>
+        </div>
+    </li>
+</ul>

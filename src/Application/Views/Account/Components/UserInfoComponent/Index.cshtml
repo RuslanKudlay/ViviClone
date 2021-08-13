@@ -1,0 +1,207 @@
+﻿@model Application.EntitiesModels.Models.UserModel
+@using Microsoft.AspNetCore.Identity
+@using Application.EntitiesModels.Entities
+@using Application.EntitiesModels.Models.Auth
+@using Application.EntitiesModels.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@* Needs to be removed *@
+<style>
+    .link {
+        color: #007bff !important;
+    }
+
+    .link:hover {
+        cursor: pointer;
+        text-decoration: underline !important;
+        color: red !important;
+    }
+</style>
+@* Needs to be removed *@
+
+<div>
+    <div class="col-md-12 userInfoContainer">
+        <h3>Личные данные</h3>
+        <table>
+            <tr>
+                <td>Имя</td>
+                <td>@Model.Name</td>
+            </tr>
+            <tr>
+                <td>Почта</td>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <td>Номер телефона</td>
+                <td>@Model.Phone</td>
+            </tr>
+            <tr>
+                <td>Поменять пароль</td>
+                <td><a class="link" data-toggle="openChangePassword">Смена пароля</a></td>
+            </tr>
+            @{await Html.RenderPartialAsync("_ChangePassword", new ResetPasswordModel());}
+        </table>
+    </div>
+
+    <div class="col-md-12 userInfoContainer">
+        <h3>Возможности входа</h3>
+        <table>
+            <tr>
+                <td>Facebook</td>
+                <td class="facebook-login">
+                    @if (Model.Logins.Contains("Facebook"))
+                    {
+                        @Html.ActionLink(
+                            "Отменить связь c Facebook",
+                            "UnlinkExternalAccount",
+                            "Account",
+                            routeValues: new { provider = "Facebook" },
+                            htmlAttributes: new
+                            {
+                                @class = "link"
+                            })
+                    }
+                    else
+                    {
+                        @Html.ActionLink(
+                            "Добавить Facebook",
+                            "SignIn",
+                            "Account",
+                            routeValues: new
+                            {
+                                provider = "Facebook",
+                                linkExternalProvider = true
+                            },
+                            htmlAttributes: new
+                            {
+                                @class = "link"
+                            })
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td>Google</td>
+                <td class="google-login">
+                    @if (Model.Logins.Contains("Google"))
+                    {
+                        @Html.ActionLink(
+                            "Отменить связь c Google",
+                            "UnlinkExternalAccount",
+                            "Account",
+                            routeValues: new { provider = "Google" },
+                            htmlAttributes: new
+                            {
+                                @class = "link"
+                            })
+                    }
+                    else
+                    {
+                        @Html.ActionLink(
+                            "Добавить Google",
+                            "SignIn",
+                            "Account",
+                            routeValues: new
+                            {
+                                provider = "Google",
+                                linkExternalProvider = true
+                            },
+                            htmlAttributes: new
+                            {
+                                @class = "link"
+                            })
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-12 userInfoContainer">
+        <h3>Дополнительные возможности</h3>
+        <table>
+            <tr>
+                <td>Ваш список желаний</td>
+                <td>
+                    @Html.ActionLink(
+                    "Открыть список желаний",
+                    "WishListUser",
+                    "Account",
+                    routeValues: null,
+                    htmlAttributes: new
+                    {
+                        @class = "link"
+                    })
+                </td>
+            </tr>
+            <tr>
+                <td>Перенести другой аккаунт</td>
+                <td>
+                    @if (TempData.Keys.Contains("mergeAccount") && TempData["mergeAccount"] == "true")
+                    {
+                        <div>
+                            Аккаунты связаны успешно!
+                        </div>
+                    }
+                    else
+                    {
+                        <a data-toggle="modal-merge-account" data-target="#merge-account" class="link">
+                            Связь с аккаунтом...
+                        </a>
+                    }
+                </td>
+                @{await Html.RenderPartialAsync("_MergeAccountModalWindow", new LoginViewModel());}
+            </tr>
+            <tr>
+                <td>Удалить аккаунт</td>
+                <td>
+                    @Html.ActionLink(
+                    "Удалить аккаунт",
+                    "DeleteAccount",
+                    "Account",
+                    routeValues: null,
+                    htmlAttributes: new
+                    {
+                        @class = "link"
+                    })
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('a[data-toggle="modal-merge-account"]').click(function (event) {
+            $('#merge-account').modal('show');
+            $('#body').addClass("fixBodyModal");
+        })
+    })
+
+    $(document).ready(function () {
+
+    @if (TempData.Keys.Contains("changePassword")) {
+        <text>
+        $("#changePasswordModal").modal('show');
+        $('#body').addClass("fixBodyModal");
+        </text>
+        TempData.Remove("changePassword");
+    }
+    else if(TempData.Keys.Contains("errorLoginMerge"))
+    {
+        <text>
+        $("#merge-account").modal('show');
+        $('#body').addClass("fixBodyModal");
+        </text>
+        TempData.Remove("errorLoginMerge");
+    }
+    else {
+        <text>
+            $("#changePasswordModal").modal('hide');
+        </text>
+    }})
+
+    $('a[data-toggle="openChangePassword"]').on("click", function () {
+        $('#changePasswordModal').modal('show');
+
+        $('#body').addClass("fixBodyModal");
+    })
+
+</script>

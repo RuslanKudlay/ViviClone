@@ -1,0 +1,79 @@
+<div id="divDataBody" class="container entity">
+    <div class="col-md-8">
+        <form name="addCategory" class="form-horizontal container-fluid formContainer" [formGroup]="myForm">
+            <div class="row formTitle">
+                <h2 class="title">{{title}}</h2>
+            </div>
+            <div class="col-md-12  col-xs-12 ">
+                <div class="col-md-4 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>Name*</label>
+                        <input type="text" class="form-control" formControlName="name" (input)="onKeyCategoryName ($event.target.value)" />
+                        <div *ngIf="errorDisplayed('name')" class="invalid-feedback">
+                            <small>Name is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <label>SubUrl*</label>
+                        <input type="text" class="form-control" formControlName="subUrl" />
+                        <div *ngIf="errorDisplayed('subUrl')" class="invalid-feedback">
+                            <small>SubUrl is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-xs-6">
+                    <div class="col-md-12 col-xs-12" style="margin-top: 25px;">
+                        <label>IsEnable</label>
+                        <input type="checkbox" formControlName="isEnable" />
+                    </div>
+                </div>
+                <div class="col-md-12 col-xs-12">
+                    <div class="form-group col-md-12 col-xs-12">
+                        <button type="submit" class="btn btn-success alignCenterBtn c"
+                                [style.visibility]="(category.id > 0) ? 'hidden' : 'visible' "
+                                (click)="addCategory()"
+                                [disabled]="myForm.invalid">
+                            Save
+                        </button>
+                        <button class="btn btn-primary  alignCenterBtn "
+                                [style.visibility]="(category.id > 0) ? 'visible' : 'hidden' "
+                                (click)="updateCategory()"
+                                [disabled]="myForm.invalid">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-4 formContainer">
+        <div class="col-md-12">
+            <span style="line-height: 4;" class="col-md-6">Category Values</span>
+            <button class="btn btn-success col-md-4 pull-right" (click)="openAddingCategoryValueDialog()">Add</button>
+        </div>
+        <div class="col-md-12" style="margin-top:15px;max-height:350px;overflow-y: auto;">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of category.categoryValues;let i = index">
+                        <td>{{item.name }}</td>
+                        <td>
+                            <button style="margin:5px;" class="btn btn-xs btn-primary col-md-5" (click)="openAddingCategoryValueDialog(item.name)">Edit</button>
+                            <a style="margin:5px;" class="btn btn-xs  btn-danger col-md-5" (click)="deleteCategoryValues(i)">
+                                Del
+                            </a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

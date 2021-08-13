@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeautyDnepr</title>
+    @RenderSection("metatags", false)
+    <link rel="shortcut icon" href="~/img/favicon.png">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,800' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/css/magnific-popup.css" />
+    <link rel="stylesheet" href="~/css/mint.min.css" />
+    <link rel="stylesheet" href="~/css/responsive.css" />
+    <link rel="stylesheet" href="~/css/animate.min.css" />
+    <link rel="stylesheet" href="~/css/admin-style.css" />
+    <link rel="stylesheet" href="~/css/homepage-menu.css" />
+    <link rel="stylesheet" href="~/css/brand-carousel.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+</head>
+<body id="page-top" style="overflow-y: overlay">
+
+    @using Microsoft.AspNetCore.Mvc.Localization
+    @using Application.Server.Extentsions
+
+    @inject IHtmlLocalizer<Program> Localizer
+    @if (Url.ActionContext.HttpContext.Request.Path.ToString() != "/Account/Login")
+    {
+    <section class="navbar-section">
+        <div class="">
+            <div class="center-block nav-font container text-center nav-color" id="" >
+                <ul class="nav navbar-nav nav-item-center bot-nav">
+                    <li class="nav-link-item"><a class="nav-a">О нас</a></li>
+                    <li class="menu-item has-childrent nav-link-item">
+                        <a class="nav-a" href="@Url.Action("Index", "Brand")">@Localizer["Shared_Layout_Brands"]</a>
+                    </li>
+                    <li class="nav-link-item"><a class="nav-a" href="@Url.Action("GetAllAnnouncement", "Announcement")">Новинки и акции</a></li>
+
+                    <li class="nav-link-item"><a class="nav-a" href="@Url.Action("Index", "Shop")">@Localizer["Shared_Layout_Shop"]</a></li>
+                    <li class="nav-link-item"><a class="nav-a" href="@Url.Action("Contact", "Home")">@Localizer["Shared_Layout_Contact"]</a></li>
+                    <li class="navbar-images">
+                        <a class="navbar-image-a" href=""><img src="~/images/facebook.png" class="navbar-image" /></a>
+                        <a class="navbar-image-a" href=""><img src="~/images/Instagram.png" class="navbar-image" /></a>
+                        <a class="navbar-image-a" href=""><img src="~/images/telegram.png" class="navbar-image" /></a>
+                        <a class="navbar-image-a" href=""><img src="~/images/viber.png" class="navbar-image" /></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="main-navbar">
+            <div class="container">
+                <div class="navbar-header white-menu-item navbar-nav-ul" style="text-align: center;">
+                    <button id="burger-btn" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-main">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+
+                    @Html.ActionLink("ViVi", "Index", "Home", null, new { @class = "navbar-brand white-menu-item" })
+                    @*<div>You application tagline</div>*@
+                </div>
+            </div>
+        </div>
+        <div class="" >
+            <div class="center-block nav-font container text-center" id="navbar-main">
+                <ul class="nav navbar-nav nav-item-center bot-nav">
+                    <li class="nav-color nav-block"><a class="nav-a">Для ухода в салонах</a></li>
+                    <li class="nav-color nav-block"><a class="nav-a">Для дома</a></li>
+                    <li class="nav-color nav-block"><a class="nav-a">Профессиональный уход</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    }
+
+    @RenderBody()
+
+    <script src="~/scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/scripts/jquery.validate.min.js"></script>
+    <script src="~/scripts/bootstrap.min.js"></script>
+    <script src="~/scripts/respond.min.js"></script>
+    <script src="~/scripts/template/jquery.easing.js"></script>
+
+    <script src="~/scripts/imageLoader.js"></script>
+    @*<script src="~/scripts/template/jquery.backstretch.min.js"></script>*@
+    <script src="~/scripts/brandCarousel/brandCarousel.js"></script>
+    <script src="~/scripts/template/imagesloaded.pkgd.min.js"></script>
+    <script src="~/scripts/template/masonry.pkgd.min.js"></script>
+    <script src="~/scripts/template/magnificpopup.min.js"></script>
+    @*<script src="~/scripts/template/script.js"></script>*@
+    <script src="~/scripts/menu/highlightActiveMenu.js"></script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.MenuModel
+
+<a href="#categories-menu" class="menu-button categories-menu-button">
+    Каталог товаров<span class="flaticon-bars"></span>
+</a>
+
+<nav id="primary-navigation" class="site-navigation main-menu">
+    <ul id="primary-menu" class="menu">
+        @foreach (var gow in Model.GroupOfWares)
+        {          
+                var parentUrl = "Shop?search=groupOfWares=" + Uri.EscapeDataString(gow.SubUrl);                
+                @if(gow?.Childs?.Count > 0)
+                {
+                    <li class="menu-item has-childrent">
+                        <a href="@parentUrl">@gow.Name</a>      
+                            <div class="sousmenu">
+                            @foreach (var secondLevel in gow.Childs)
+                            {
+                                <ul class="secondLevelContainer">
+                                    <li class="menu-item">
+                                        @{
+                                            var secondUrl = "Shop?search=groupOfWares=" + Uri.EscapeDataString(secondLevel.SubUrl);
+                                        }
+                                        <a href="@secondUrl">@secondLevel.Name</a>
+                                        @if (secondLevel?.Childs?.Count > 0)
+                                        {
+                                    <ul>
+                                        @foreach (var thirdLevel in secondLevel.Childs)
+                                        {
+                                            var thirdUrl = "Shop?search=groupOfWares=" + Uri.EscapeDataString(thirdLevel.SubUrl);
+                                            <li class="menu-item thirdLevel">
+                                                <a href="@thirdUrl">@thirdLevel.Name</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                        }
+                                    </li>
+                                </ul>
+                            }      
+                            </div>
+                    </li>
+                }
+                else
+                {
+                    <li class="menu-item">
+                        <a href="@parentUrl">@gow.Name</a>
+                    </li>
+                }               
+          
+        }       
+    </ul>
+</nav>

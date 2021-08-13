@@ -1,0 +1,30 @@
+<div id="divDataBody" class="container entity">
+    <div class="row formTitle">
+        <h2 class="title">{{titleStatus}}</h2>
+    </div>
+    <form name="addWaresCategoryValues" class="form-horizontal formContainer container-fluid" >
+        <div class="col-md-8 col-md-offset-2 col-xs-12 ">
+            <div class="col-md-6 col-xs-6">
+                <div class="form-group col-md-12 col-xs-12">
+                    <label>Wares</label>  
+                    <select name="Parent" class="form-control"  (change)="onChangeSelectWare(wares[$event.target.selectedIndex])" [(ngModel)]="waresCategoryValue.ware.name">
+                            <option *ngFor="let enumValue of wares"[ngValue]="enumValue.name">{{enumValue.name}}</option>
+                    </select>
+                </div>
+            </div>                   
+            <div class="col-md-12 col-xs-12" *ngIf="isDataCome">
+                <div class="form-group col-md-12 col-xs-12" style="margin-top: 25px;">
+                    <label>Category Values</label>                                            
+                    <angular2-multiselect  [data]="itemList" name="categoryValues"   [(ngModel)]="selectedItems" [settings]="settings" >                                              
+                    </angular2-multiselect>                
+                </div>
+            </div>                
+            <div class="col-md-12 col-xs-12">
+                <div class="form-group col-md-12 col-xs-12">                  
+                    <button type="submit" class="btn btn-success col-md-2 col-md-offset-5" [style.visibility]="(waresCategoryValue.id > 0) ? 'hidden' : 'visible' " (click)="add()">Save</button>
+                    <button class="btn btn-primary col-md-2 col-md-offset-5" [style.visibility]="(waresCategoryValue.id > 0) ? 'visible' : 'hidden' " (click)="update()">Update</button>
+                </div>
+            </div>   
+        </div>
+    </form>
+</div>

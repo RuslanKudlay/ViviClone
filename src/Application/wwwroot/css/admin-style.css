@@ -1,0 +1,109 @@
+﻿.admin-sheet {
+    background-color: white;
+    opacity: 0.9;
+    padding-bottom: 15px;
+}
+
+.color-box {
+    width: 200px;
+    height: 100px;
+    border: 1px solid grey;
+    margin: 0 0 15px 0;
+}
+
+.color-sheet {
+    padding-right: 50px;
+}
+
+.logo-box {
+    margin: 0 0 15px 0;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+}
+
+.formContainer {
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    padding: 25px;
+    margin-top: 15px;
+}
+
+body {
+    background-color: #f7f7f7;
+}
+
+.formTitle h2 {
+    font-size: 25px;
+    font-family: robot;
+    margin-left: 15px;
+}
+
+.cuppa-dropdown {
+    height: 50px;
+}
+
+.selected-list {
+    height: 50px;
+}
+
+.ngx-datepicker-calendar-container {
+    z-index: 10;
+    width: 100%;
+}
+
+.ngx-datepicker-input {
+    width: 100% !important;
+}
+
+.ag-paging-page-summary-panel {
+    margin: 0 auto;
+    display: flex;
+    width: 25%;
+}
+
+.ag-bootstrap .ag-paging-row-summary-panel {
+    margin: 0 auto;
+    text-align: center;
+}
+
+.ag-cell-focus {
+    border: 0 !important;
+    outline: none !important;
+}
+
+.main-panel {
+    padding: 25px;
+    overflow: auto !important;
+}
+
+.card {
+    padding: 25px;
+}
+
+.alignCenterBtn {
+    margin: 0 auto;
+    display: block;
+    width: 150px;
+}
+
+.table-hover > tbody > tr > td {
+    padding: 0;
+}
+
+.modal-body img {
+    max-width: 350px;
+}
+
+.modal-body [class^="flaticon-"]:before, [class*=" flaticon-"]:before,
+.modal-body [class^="flaticon-"]:after, [class*=" flaticon-"]:after {
+    font-size: 30px !important;
+}
+
+[class^="flaticon-"]:hover {
+    cursor: pointer;
+}
+
+.invalid-feedback small {
+    color: red;
+}

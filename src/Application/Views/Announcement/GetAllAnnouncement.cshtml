@@ -1,0 +1,50 @@
+﻿@using HtmlAgilityPack
+@model IEnumerable<Application.EntitiesModels.Models.AnnouncementModel>
+
+
+<div class="container margin-from-menu">
+    <div class="announcements-box">
+        @foreach (var item in Model)
+        {
+            if (item.IsEnable)
+            {
+                <div class="announcement-box">
+                    <div><h4 style="min-height: 40px">@item.Title</h4></div>
+                    @if (item.Body != null)
+                    {
+                        HtmlDocument doc = new HtmlDocument();
+                        doc.LoadHtml(item.Body);
+                        var img = doc.DocumentNode.SelectSingleNode("//img");
+                        img.RemoveClass("img-responsive");
+                        img.SetAttributeValue("height", "250px");
+                        img.SetAttributeValue("width", "550px");
+                        img.SetAttributeValue("style", "");
+                        if (img != null)
+                        {
+                            <div>
+                            <a href="@Url.Action("GetAnnouncement", "Announcement", new { id = item.Id }, null)">
+                                <div>
+                                    @Html.Raw(img.OuterHtml)
+                                </div>
+                            </a>
+                                </div>
+                        }
+                        if (@doc.DocumentNode.InnerText.Length > 200)
+                        {
+                            var res = @doc.DocumentNode.InnerText.Substring(0, 200);
+                            <div><p>@Html.Raw(res) <strong style="cursor: pointer">@Html.ActionLink("...подробнее", "GetAnnouncement", "Announcement", new { id = item.Id }, null)</strong></p></div>
+                        }
+                        else
+                        {
+                            <div><p>@Html.Raw(doc.DocumentNode.InnerText) <strong style="cursor: pointer">@Html.ActionLink("...подробнее", "GetAnnouncement", "Announcement", new { id = item.Id }, null)</strong></p></div>
+                        }
+                    }
+                    <div>
+                        <i class="fa fa-calendar" aria-hidden="true"></i>
+                        @Html.DisplayFor(modelItem => item.LastUpdateDate)
+                    </div>
+                </div>            
+            }
+        }
+    </div>
+</div>

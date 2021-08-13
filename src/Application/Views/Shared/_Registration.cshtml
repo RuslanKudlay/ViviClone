@@ -1,0 +1,49 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.RegistrationModels.UserRegisterViewModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Program> Localizer
+
+<form id="signupform" asp-antiforgery="true" asp-action="Register" asp-controller="Account" method="post" class="m-t-10">
+    <div class="form-group d-flex flex-column">
+        <label asp-for="SecondName"></label>
+        <input class="input-text" asp-for="SecondName" autocomplete="off" />
+        <span asp-validation-for="SecondName" class="text-danger"></span>
+    </div>
+    <div class="form-group d-flex flex-column">
+        <label asp-for="FirstName"></label>
+        <input class="input-text" asp-for="FirstName" autocomplete="off" />
+        <span asp-validation-for="FirstName" class="text-danger"></span>
+    </div>
+    <div class="form-group d-flex flex-column">
+        <label asp-for="Email"></label>
+        <input id="registrationEmail" class="input-text" asp-for="Email" autocomplete="off" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-group d-flex flex-column">
+        <label asp-for="Phone"></label>
+        <input id="registrationPhone" type="tel" class="input-text" asp-for="Phone" placeholder="+38(0__) ___-__-__" autocomplete="off" />
+        <span asp-validation-for="Phone" class="text-danger"></span>
+    </div>
+    <div class="form-group d-flex flex-column">
+        <label asp-for="Password"></label>
+        <input id="registrationPassword" class="input-text" asp-for="Password" autocomplete="off" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <div class="form-group d-flex flex-column">
+        <label asp-for="ConfirmPassword"></label>
+        <input class="input-text" asp-for="ConfirmPassword" autocomplete="off" />
+        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+    </div>
+    <div class="form-group m-b-0">
+        <button id="submitbutton" class="btn btn-primary" name="register" type="submit">@Localizer["Registration"].Value</button>
+    </div>
+</form>
+
+<script>
+    jQuery(function ($) {
+        $("#registrationPhone").mask("+38(099) 999-99-99");
+    });
+</script>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

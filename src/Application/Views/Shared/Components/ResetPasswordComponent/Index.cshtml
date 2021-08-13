@@ -1,0 +1,115 @@
+﻿@model Application.EntitiesModels.Models.Auth.ResetPasswordModel
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IHtmlLocalizer<Program> Localizer
+
+@{string errorResetPassword = "none"; string[] errors = null;}
+@if (TempData.Count != 0)
+{
+    if (TempData.Keys.Contains("errorResetPassword"))
+    {
+        errorResetPassword = "true";
+        errors = TempData["errorResetPassword"].ToString().Split(";");
+    }
+}
+
+<div class="modal fixWindowModal show" id="resetPasswordModalWindow" data-backdrop="static" data-keyboard="false"
+     tabindex="-1" role="dialog" aria-labelledby="resetModalLabel" aria-modal="true" style="display: block">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            @if (!TempData.Keys.Contains("resetPasswordConfirmation"))
+            {
+                <div class="modal-header">
+                    <h2 class="modal-title">@Localizer["ResetPassword"].Value</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeResetPasswordModalWindow">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="resetPasswordForm" asp-controller="Account" asp-action="ResetPasswordMVC" method="post" class="m-t-10">
+                        <div class="form-group">                   
+                            @Localizer["ResetPasswordConfirmByEmail"].Value
+                        </div>
+                        @if (errorResetPassword != "none")
+                        {
+                            foreach (var error in errors)
+                            {
+                                if (error != "")
+                                {
+                                    <div id="registrationError">
+                                        <p style="color: red;">&bull; @Localizer[error].Value</p>
+                                    </div>
+                                }
+                            }
+                        }
+                        <div class="form-group">
+                            <label asp-for="Code" class="control-label"></label>
+                            <input class="form-control" asp-for="Code" autocomplete="off">
+                            <span asp-validation-for="Code" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Email" class="control-label"></label>
+                            <input class="form-control" asp-for="Email" autocomplete="off">
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Password" class="control-label"></label>
+                            <input asp-for="Password" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ConfirmPassword" class="control-label"></label>
+                            <input asp-for="ConfirmPassword" class="form-control" autocomplete="off" />
+                            <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="form-group m-b-0">
+                            <button type="submit" class="btn btn-primary">
+                                @Localizer["ResetPassword"].Value
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                TempData.Remove("errorResetPassword");
+            }
+            else
+            {
+                <div class="modal-header">
+                    <h2 class="modal-title">@Localizer["ConfirmationResetPassword"].Value</h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeResetPasswordModalWindow">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Localizer["SuccessResetPassword"].Value
+                    <a class="link" id="redirectToLogin" asp-controller="Account" asp-action="OpenLoginTab"> @Localizer["TransitionByLink"].Value</a>.
+                </div>
+
+                TempData.Remove("resetPasswordConfirmation");
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+<script>
+    let closeModalButton = $('#closeResetPasswordModalWindow');
+    let redirectToLogin = $('#redirectToLogin');
+
+    $('#body').addClass("fixBodyModal");
+
+    closeModalButton.on("click", function () {
+        $('#resetPasswordModalWindow').removeAttr("style");
+        $('#resetPasswordModalWindow').removeClass("show");
+        $('#resetPasswordModalWindow').removeAttr("aria-modal");
+        $('#resetPasswordModalWindow').attr("aria-hidden", "true");
+
+        $('#body').removeClass("fixBodyModal");
+    })
+
+    redirectToLogin.on("click", function () {
+        closeModalButton.trigger("click");     
+    })
+</script>

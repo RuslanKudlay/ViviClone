@@ -1,0 +1,123 @@
+﻿@model Application.EntitiesModels.Models.ViewsModel.BasketModel
+@using Application.EntitiesModels.Models.ViewsModel.RegistrationModels
+
+@if (!Model.IsFullDiplay)
+{
+    <div class="header-bottom-right-content cart-menu-relative">
+        <div class="cart-menu">
+            <a href="javascript:void(0)" class="link-top">
+                <i class="flaticon-commerce"></i>
+                <span class="text-bold">Корзина</span>
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
+                <p class="cart-amount">@Model.BasketItems.Count</p>
+            </a>
+        </div>
+        <div class="cart-hover">
+            <div class="cart-hover-title">Товар <span>Цена</span></div>
+            @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
+            {
+                <ul class="list-hover-cart">
+                    @foreach (var item in Model.BasketItems)
+                    {
+                        <li class="hover-cart-item">
+                            <a href="javascript:void(0)" class="img-hover-cart">
+                                <img class="loadImage" data-imageUrl="@item.Ware.WareImage" alt="img-hover-cart" width="75" height="89">
+                                <span class="delete-product-hover-cart" data-id="@item.Ware.Id"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                            </a>
+                            <div class="text-hover-cart">
+                                <p class="name-hover-cart">@item.Ware.Name</p>
+                                <p class="quanlity-hover-cart" style="margin-top:5px;">Кол-во: <span id="@item.Ware.Id">@item.WareQuantity</span></p>
+                            </div>
+                            <div class="price-hover-cart">@item.Ware.Price <span>UAH</span></div>
+                        </li>
+                    }
+                </ul>
+            }
+            else
+            {
+                <span>Корзина пуста</span>
+            }
+            @if (Model.BasketItems.Count > 0)
+            {
+                <div class="subtotal-hover-cart">Общая цена <span class="totalAmount">@Html.Raw(Model.TotalPrice) UAH</span></div>
+                <div class="button-cart-hover">
+                    <a href="javascript:void(0)" class="go-to-cart button clear-basket">Очистить корзину</a>
+                    @if (!Context.User.Identity.IsAuthenticated)
+                    {
+                        <a href="javascript:void(0)" class="check-out button orange continueToOrder">Оформить заказ</a>
+                    }
+                    else
+                    {
+                        <a href="javascript:void(0)" class="check-out button orange createOrder">Оформить заказ</a>
+                    }
+                </div>
+            }
+
+        </div>
+    </div>
+}
+else
+{
+    @if (Model.BasketItems != null && Model.BasketItems.Count > 0)
+    {
+        <div class="div-table-cart">
+            <ul class="list-hover-cart">
+                @foreach (var item in Model.BasketItems)
+                {
+                    <li class="hover-cart-item m-b-15">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <a href="javascript:void(0)" class="img-hover-cart">
+                                        <img class="loadImage" data-imageUrl="@item.Ware.WareImage" alt="img-hover-cart" width="100" height="120">
+                                        <span class="delete-product-cart" data-id="@item.Ware.Id" title="Удалить из корзины"><i class="fa fa-times-circle" aria-hidden="true"></i></span>
+                                    </a>
+                                </div>
+                                <div class="col-md-6">
+                                    <h4 class="font-weight-bold text-center m-b-30">@item.Ware.Name</h4>
+                                    <div class="d-flex justify-content-around">
+                                        <div class="decreateWare" data-id="@item.Ware.Id"></div>
+                                        <input wareid="@item.Ware.Id" type="text" class="inputQuantity" readonly value="@item.WareQuantity" />
+                                        <div class="incrementWare"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="badge badge-info"><h4 class="font-weight-bold text-white">@item.Ware.Price UAH</h4></div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <div>
+                <hr />
+                <div class="d-flex justify-content-between p-l-10 p-r-10">
+                    <h3 class="font-weight-normal">Итоговая сумма:</h3>
+                    <div class="badge badge-info"><h3 id="totalPrice" class="font-weight-bold text-white">@Model.TotalPrice UAH</h3></div>
+                </div>
+                <hr />
+            </div>
+            <div class="d-flex justify-content-between button-cart" style="margin-top:10px;">
+                <a class="button button-check-out close-basket-modal" href="javascript:void(0)">Продолжить покупки</a>
+                @if (!Context.User.Identity.IsAuthenticated)
+                {
+                    <a href="javascript:void(0)" class="check-out button orange continueToOrder" style="margin-bottom:10px;">Оформить заказ</a>
+                }
+                else
+                {
+                    <a href="javascript:void(0)" class="button button-check-out createOrder" style="margin-bottom:10px;">Оформить заказ</a>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div style="text-align: center;font-size:18px;">
+            Корзина пуста
+        </div>
+    }
+}
+
+<input type="hidden" id="countWaresInBasket" value="@Model.BasketItems.Count" />
+
+<script src="~/scripts/imageLoader.js"></script>

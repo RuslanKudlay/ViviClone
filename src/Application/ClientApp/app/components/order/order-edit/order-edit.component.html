@@ -1,0 +1,39 @@
+
+<div id="divDataBody" class="col-md-12 entity">
+    <ul class="nav nav-tabs">
+        <li class="active li-nav"><a data-toggle="tab" href="#info">Main info</a></li>
+    </ul>
+
+    <div class="tab-content">
+        <div id="info" class="tab-pane fade in active">
+            <form name="addWare" class="form-horizontal container-fluid formContainer">
+                <div class="row formTitle">
+                    <h2 class="title">Edit Order</h2>
+                </div>
+                <div class="col-md-8 col-md-offset-2 col-xs-12" *ngIf="!loading">
+                    <div class="col-md-12 col-xs-12">
+                        <div class="form-group col-md-12 col-xs-12">
+                            <label>Order status</label>
+                            <select [(ngModel)]="order.status" class="form-control" tabindex="-1" name="selectStatus" (change)="onSelectUpdated()">
+                                <option *ngFor="let orderStatus of orderStatuses; let i = index" class="form-control" [selected]="orderStatus.statusName == order.status">
+                                    {{ orderStatus.statusName }}
+                                </option>
+                            </select>
+                            <div class="form-row text-center">
+                                <div class="col-12">
+                                    <button class="btn btn-primary" (click)="nextStatus()" [disabled]="order.status == 'Delivered'">{{buttonText}}</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="col-md-12 col-xs-12" *ngIf="order.id && originStatus && originStatus != order.status;">
+        <div class="form-group col-md-12 col-xs-12">
+            <button class="btn btn-primary alignCenterBtn" (click)="update()">Update</button>
+        </div>
+    </div>
+</div>
+
