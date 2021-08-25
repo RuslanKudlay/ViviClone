@@ -15,12 +15,12 @@
                         HtmlDocument doc = new HtmlDocument();
                         doc.LoadHtml(item.Body);
                         var img = doc.DocumentNode.SelectSingleNode("//img");
-                        img.RemoveClass("img-responsive");
-                        img.SetAttributeValue("height", "250px");
-                        img.SetAttributeValue("width", "550px");
-                        img.SetAttributeValue("style", "");
                         if (img != null)
                         {
+                            img.RemoveClass("img-responsive");
+                            img.SetAttributeValue("height", "250px");
+                            img.SetAttributeValue("width", "550px");
+                            img.SetAttributeValue("style", "");
                             <div>
                             <a href="@Url.Action("GetAnnouncement", "Announcement", new { id = item.Id }, null)">
                                 <div>
