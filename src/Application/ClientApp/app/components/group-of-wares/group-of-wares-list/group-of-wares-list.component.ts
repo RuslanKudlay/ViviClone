@@ -1,10 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { NgModule, Component, enableProdMode, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DialogService } from 'ng2-bootstrap-modal';
 import { GroupOfWares } from '../../../models/group-of-wares.model';
 import { CreateCyrillicFriendlySuburlService } from '../../../services/create-cyrillic-friendly-suburl.service';
 import { GroupOfWaresService } from '../../../services/group-of-wares.service';
-import { Observable } from 'rxjs';
 
 @Component({
     selector: 'group-of-wares-list',
@@ -12,6 +11,8 @@ import { Observable } from 'rxjs';
     styleUrls: ['./group-of-wares-list.component.css']
 })
 export class GroupOfWaresListComponent implements OnInit {
+
+
     public isEditBrandName: boolean = false;
     public gows: GroupOfWares[];
 
@@ -46,5 +47,11 @@ export class GroupOfWaresListComponent implements OnInit {
         }, error => {
             alert(error.error);
         });
+    }
+    onDragChange(e) {
+        console.log('onDragChange says:' + e);
+    }
+    onDragEnd(e) {
+        console.log('onDragEnd says:' + e);
     }
 }
