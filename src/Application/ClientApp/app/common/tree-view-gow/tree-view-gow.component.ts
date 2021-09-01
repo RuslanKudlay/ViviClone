@@ -4,6 +4,7 @@ import { CreateCyrillicFriendlySuburlService } from '../../services/create-cyril
 import { ExtensionModalService } from '../../services/extension-modal-service';
 import { Router } from '@angular/router';
 import { GroupOfWaresService } from '../../services/group-of-wares.service';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 // declare var $: any;
 @Component({
 	selector: 'tree-view-gow',
@@ -63,5 +64,8 @@ export class TreeViewGOWComponent implements OnInit {
 			else return true;
 		}
 		else return true;
+	}
+	drop(event: CdkDragDrop<string[]>) {
+		moveItemInArray(this.gows, event.previousIndex, event.currentIndex);
 	}
 }

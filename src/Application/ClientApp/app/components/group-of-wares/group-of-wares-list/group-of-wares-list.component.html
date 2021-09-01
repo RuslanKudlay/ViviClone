@@ -10,7 +10,7 @@
     <div class="row">
         <div class="treeContainer">
             <div class="brandContainer">
-                <tree-view-gow [gows]="gows" [allGows]="gows">
+                <tree-view-gow [gows]="gows" [allGows]="gows" cdkDropList (cdkDropListDropped)="drop($event)">
                 </tree-view-gow>
             </div>
         </div>

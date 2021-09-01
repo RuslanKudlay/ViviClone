@@ -1,4 +1,4 @@
-<ul *ngFor="let node of gows; let i = index;" class="treenodes">
+<ul *ngFor="let node of gows; let i = index;" class="treenodes" cdkDrag>
     <li class="treenode">
         <div class="nodeInfoContainer">
             <div class="nodeInfo" (dblclick)="editGroupOfWares(node)">
