@@ -149,8 +149,8 @@ namespace Application.BBL.BusinessServices
                     .Include(gow => gow.WareGOWs)
                     .Include(gow => gow.Childs)
                         .ThenInclude(gow => gow.Childs)
-                    .Where(gow => gow.Parent == null)
-                    .Where(gow => gow.WareGOWs.Count() > 0)
+                    //.Where(gow => gow.Parent == null)
+                    //.Where(gow => gow.WareGOWs.Count() > 0)
                     .Select(gow => modelMapper.MapTo<GOW, GOWModel>(gow))
                     .ToList();
                 return gows;

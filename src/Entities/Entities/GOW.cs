@@ -15,7 +15,7 @@ namespace Application.EntitiesModels.Entities
         public string ShortDescription { get; set; }
         public string LogoImage { get; set; }
         public string IconString { get; set; }
-        public virtual GOW Parent { get; set; }
+        public virtual GOW Parent { get; set; } ///Уточнить зачем это поле ??
         public virtual ICollection<GOW> Childs { get; set; }
         public virtual ICollection<WareGOW> WareGOWs { get; set; }
     }
